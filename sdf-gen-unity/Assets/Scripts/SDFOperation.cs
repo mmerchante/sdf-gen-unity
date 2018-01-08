@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class SDFOperation : MonoBehaviour
 {
     public enum OperationType
@@ -12,13 +13,9 @@ public class SDFOperation : MonoBehaviour
     }
 
     public OperationType operationType = OperationType.Union;
-
-    private List<SDFShape> children = new List<SDFShape>(10);
-
-    public List<SDFShape> GetShapes()
+    
+    public void Update()
     {
-        // No caching
-        GetComponentsInChildren<SDFShape>(children);
-        return children;
+        this.name = operationType.ToString();
     }
 }

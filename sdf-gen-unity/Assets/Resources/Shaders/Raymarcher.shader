@@ -49,6 +49,19 @@
 				float3 worldSpacePosition : TEXCOORD1;
 			};
 
+			struct Intersection
+			{
+				float totalDistance;
+				float sdf;
+				int materialID;
+			};
+
+			struct Camera
+			{
+				float3 origin;
+				float3 direction;
+			};
+
 			struct Node
 			{
 				float4x4 transform;
@@ -57,11 +70,8 @@
 				int depth;
 			};
 
-			StructuredBuffer<Node> _SceneTree : register(t1);
-			
 			uniform int _SDFShapeCount;
-			uniform float4 _SDFShapeParameters[MAX_SHAPE_COUNT];
-			uniform float4x4 _SDFShapeTransforms[MAX_SHAPE_COUNT]; 
+			StructuredBuffer<Node> _SceneTree : register(t1);
 
 			v2f vert (appdata v)
 			{
@@ -77,20 +87,6 @@
 				return o;
 			}
 
-			struct Intersection
-			{
-				float totalDistance;
-				float sdf;
-				int materialID;
-			};
-
-			struct Camera
-			{
-				float3 origin;
-				float3 direction;
-			};
-
-			
 			// hg
 			float vmax(float3 v) {
 				return max(max(v.x, v.y), v.z);
@@ -109,6 +105,12 @@
 				return d;
 			}
 
+			// iq
+			float hash(float n)
+			{
+				return frac(sin(n)*1751.5453);
+			}
+
 			struct StackData
 			{
 				int index;
@@ -116,9 +118,15 @@
 				float3 pos;
 			};
 
-			float sdf_simple(float3 p)
+			#define MAX_STACK 32
+
+			// This is a straightforward approach to previsualize the actual sdf inside Unity
+			// that is dynamic and general enough to edit a scene in a reasonable framerate.
+			// An optimized version would have specific code knowing each shape, removing the loop, etc.
+			// Ideally, our code generator should generate the optimized code.
+			float sdf(float3 p)
 			{
-				StackData stack[64];
+				StackData stack[MAX_STACK];
 				stack[0].index = 0;
 				stack[0].sdf = 1000.0;
 				stack[0].pos = mul(_SceneTree[0].transform, float4(p, 1.0)).xyz;
@@ -126,8 +134,10 @@
 				int stackTop = 1;
 				int currentIndex = 1;
 
-				[loop]
-				while(currentIndex < _SDFShapeCount && stackTop > 0 && stackTop < 64)
+				// Although ideally we could bake final transforms into the leaf shapes,
+				// Domain transformations require the proper transform at the level of that node,
+				// so if we want full flexibility, we need to compose them.
+				while(currentIndex < _SDFShapeCount && stackTop > 0 && stackTop < MAX_STACK)
 				{
 					Node node = _SceneTree[currentIndex];
 					int depth = node.depth;
@@ -139,7 +149,7 @@
 					// Backtrack
 					if (node.depth <= parentNode.depth)
 					{
-						stack[stackTop - 2].sdf = min(stack[stackTop - 2].sdf, stack[stackTop - 1].sdf);
+						stack[stackTop - 2].sdf = min(stack[stackTop - 2].sdf, parentStackData.sdf);
 						stackTop--;
 						continue;
 					}
@@ -149,7 +159,7 @@
 					{
 						// We initialize the node
 						stack[stackTop].index = currentIndex;
-						stack[stackTop].sdf = 1000.0;
+						stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
 						stack[stackTop].pos = mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 						
 						stackTop++;
@@ -170,8 +180,17 @@
 						else if (parameters == 4)
 							dd = fCylinder(wsPos);
 
+						int opType = parentNode.parameters;
+
+						if(opType == 0)
+							dd = min(parentStackData.sdf, dd);
+						else if(opType == 1)
+							dd = max(-parentStackData.sdf, dd);
+						else if (opType == 2)
+							dd = max(parentStackData.sdf, dd);
+
 						// For now, union
-						stack[stackTop - 1].sdf = min(stack[stackTop - 1].sdf, dd);
+						stack[stackTop - 1].sdf = dd;
 					}
 
 					currentIndex++;
@@ -187,13 +206,14 @@
 				return stack[0].sdf;
 			}
 
+			// Don't use this ;)
 			float3 sdfNormal(float3 p, float epsilon)
 			{
 				float3 eps = float3(epsilon, -epsilon, 0.0);
 
-				float dX = sdf_simple(p + eps.xzz) - sdf_simple(p + eps.yzz);
-				float dY = sdf_simple(p + eps.zxz) - sdf_simple(p + eps.zyz);
-				float dZ = sdf_simple(p + eps.zzx) - sdf_simple(p + eps.zzy);
+				float dX = sdf(p + eps.xzz) - sdf(p + eps.yzz);
+				float dY = sdf(p + eps.zxz) - sdf(p + eps.zyz);
+				float dZ = sdf(p + eps.zzx) - sdf(p + eps.zzy);
 
 				return normalize(float3(dX, dY, dZ));
 			}
@@ -207,7 +227,7 @@
 				for (int j = 0; j < MAX_STEPS; ++j)
 				{
 					float3 p = camera.origin + camera.direction * outData.totalDistance;
-					outData.sdf = sdf_simple(p);
+					outData.sdf = sdf(p);
 					
 					outData.totalDistance += outData.sdf;
 
@@ -227,11 +247,11 @@
 
 				if (isect.materialID > 0)
 				{
+					// Normals are expensive!
 					float3 lightDir = -_WorldSpaceLightPos0.xyz;
-					float cosTheta = sdf_simple(p - camera.direction * .15 + lightDir * .2) / .5;
+					float3 dir = normalize(camera.direction * .5 - lightDir);
+					float cosTheta = sdf(p - dir * (.25 + hash(length(p)) * .02)) / .25;
 					return cosTheta;
-					/*float3 normal = sdfNormal(p, EPSILON_NORMAL);
-					return dot(normal, -_WorldSpaceLightPos0.xyz) + max(0.0, -dot(normal, -_WorldSpaceLightPos0.xyz)) * 1.01;*/
 				}
 
 				return 0.0;
