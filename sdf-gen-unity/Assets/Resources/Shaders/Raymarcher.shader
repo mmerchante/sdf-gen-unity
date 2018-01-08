@@ -9,28 +9,27 @@
 	{
 		Cull Off ZWrite Off ZTest Always
 
-		Tags { "Queue"="Geometry-1"}
+		Tags { "Queue"="Geometry-1" }
 
 		Pass
 		{
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma target 5.0
 			
 			#include "UnityCG.cginc"
-
+			
 			#define PI 3.14159265
 			#define TAU (2*PI)
 			#define PHI (sqrt(5)*0.5 + 0.5)
 
-			#define MAX_STEPS 100
+			#define MAX_STEPS 50
 			#define MAX_STEPS_F float(MAX_STEPS)
 
-			#define FIXED_STEP_SIZE .05
-
-			#define MAX_DISTANCE 50.0
+			#define MAX_DISTANCE 25.0
 			#define MIN_DISTANCE .5
-			#define EPSILON .01
+			#define EPSILON .025
 			#define EPSILON_NORMAL .01
 
 			#define MATERIAL_NONE -1
@@ -50,6 +49,16 @@
 				float3 worldSpacePosition : TEXCOORD1;
 			};
 
+			struct Node
+			{
+				float4x4 transform;
+				int type; 
+				int parameters;
+				int depth;
+			};
+
+			StructuredBuffer<Node> _SceneTree : register(t1);
+			
 			uniform int _SDFShapeCount;
 			uniform float4 _SDFShapeParameters[MAX_SHAPE_COUNT];
 			uniform float4x4 _SDFShapeTransforms[MAX_SHAPE_COUNT]; 
@@ -80,6 +89,7 @@
 				float3 origin;
 				float3 direction;
 			};
+
 			
 			// hg
 			float vmax(float3 v) {
@@ -99,33 +109,82 @@
 				return d;
 			}
 
+			struct StackData
+			{
+				int index;
+				float sdf;
+				float3 pos;
+			};
+
 			float sdf_simple(float3 p)
 			{
-				float d = 1000.0;
+				StackData stack[64];
+				stack[0].index = 0;
+				stack[0].sdf = 1000.0;
+				stack[0].pos = mul(_SceneTree[0].transform, float4(p, 1.0)).xyz;
+
+				int stackTop = 1;
+				int currentIndex = 1;
 
 				[loop]
-				for (int i = 0; i < _SDFShapeCount; ++i)
+				while(currentIndex < _SDFShapeCount && stackTop > 0 && stackTop < 64)
 				{
-					float4 params = _SDFShapeParameters[i];
-					float3 wsPos = mul(_SDFShapeTransforms[i], float4(p, 1.0)).xyz;
+					Node node = _SceneTree[currentIndex];
+					int depth = node.depth;
+					int type = node.type;
 
-					int type = int(params.w);
+					StackData parentStackData = stack[stackTop - 1];
+					Node parentNode = _SceneTree[parentStackData.index];
 
-					float dd = 0.0;
+					// Backtrack
+					if (node.depth <= parentNode.depth)
+					{
+						stack[stackTop - 2].sdf = min(stack[stackTop - 2].sdf, stack[stackTop - 1].sdf);
+						stackTop--;
+						continue;
+					}
 
-					if (type == 1)
-						dd = wsPos.y;
-					else if (type == 2)
-						dd = length(wsPos) - .5;
-					else if (type == 3)
-						dd = fBox(wsPos);
-					else if (type == 4)
-						dd = fCylinder(wsPos);
+					// Hierarchy node
+					if (type == 0)
+					{
+						// We initialize the node
+						stack[stackTop].index = currentIndex;
+						stack[stackTop].sdf = 1000.0;
+						stack[stackTop].pos = mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
+						
+						stackTop++;
+					} 
+					else if (type == 1)
+					{
+						int parameters = node.parameters;
+						float3 wsPos = mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 
-					d = min(d, dd);
+						float dd = 1000.0;
+
+						if (parameters == 1)
+							dd = wsPos.y;
+						else if (parameters == 2)
+							dd = length(wsPos) - .5;
+						else if (parameters == 3)
+							dd = fBox(wsPos);
+						else if (parameters == 4)
+							dd = fCylinder(wsPos);
+
+						// For now, union
+						stack[stackTop - 1].sdf = min(stack[stackTop - 1].sdf, dd);
+					}
+
+					currentIndex++;
 				}
 
-				return d;
+				// Last backtrack
+				while (stackTop > 1)
+				{
+					stack[stackTop - 2].sdf = min(stack[stackTop - 2].sdf, stack[stackTop - 1].sdf);
+					--stackTop;
+				}
+
+				return stack[0].sdf;
 			}
 
 			float3 sdfNormal(float3 p, float epsilon)
@@ -152,7 +211,7 @@
 					
 					outData.totalDistance += outData.sdf;
 
-					if (outData.sdf < EPSILON)
+					if (outData.sdf < EPSILON || outData.totalDistance > MAX_DISTANCE)
 						break;
 				}
 
@@ -168,8 +227,11 @@
 
 				if (isect.materialID > 0)
 				{
-					float3 normal = sdfNormal(p, EPSILON_NORMAL);
-					return dot(normal, -_WorldSpaceLightPos0.xyz) + max(0.0, -dot(normal, -_WorldSpaceLightPos0.xyz));
+					float3 lightDir = -_WorldSpaceLightPos0.xyz;
+					float cosTheta = sdf_simple(p - camera.direction * .15 + lightDir * .2) / .5;
+					return cosTheta;
+					/*float3 normal = sdfNormal(p, EPSILON_NORMAL);
+					return dot(normal, -_WorldSpaceLightPos0.xyz) + max(0.0, -dot(normal, -_WorldSpaceLightPos0.xyz)) * 1.01;*/
 				}
 
 				return 0.0;

@@ -2,39 +2,85 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [ExecuteInEditMode]
 public class SDFGenerator : MonoBehaviour
 {
-    public MeshRenderer quadRenderer;
-
     private const int MAX_SHAPES = 128;
 
+    public MeshRenderer quadRenderer;
+
     private Material material;
-    private Vector4[] data = new Vector4[MAX_SHAPES];
-    private Matrix4x4[] transforms = new Matrix4x4[MAX_SHAPES];
+    private ComputeBuffer nodeBuffer;
+
+    public struct Node
+    {
+        public Matrix4x4 transform;
+        public int type;
+        public int parameters;
+        public int depth;
+    }
 
     public void Awake()
     {
         this.material = quadRenderer.sharedMaterial;
     }
 
-    public void LateUpdate()
+    private void RebuildSceneData()
     {
         SDFShape[] shapes = GetComponentsInChildren<SDFShape>();
         int count = Mathf.Min(MAX_SHAPES, shapes.Length);
 
-        for (int i = 0; i < count; ++i)
+        List<Node> tree = new List<Node>();
+        BuildNodeTree(this.gameObject, tree, 0);
+
+        if (nodeBuffer == null)
         {
-            data[i] = shapes[i].GetParameters();
-            transforms[i] = shapes[i].transform.worldToLocalMatrix;
+            int nodeSize = System.Runtime.InteropServices.Marshal.SizeOf(typeof(Node));
+            this.nodeBuffer = new ComputeBuffer(MAX_SHAPES, nodeSize, ComputeBufferType.Default);
         }
 
-        if (data.Length > 0)
+        this.nodeBuffer.SetData(tree.ToArray());
+
+        material.SetBuffer("_SceneTree", this.nodeBuffer);
+        material.SetInt("_SDFShapeCount", tree.Count);
+    }
+
+    public void OnDestroy()
+    {
+        if(nodeBuffer != null)
+            nodeBuffer.Release();
+    }
+
+    private void BuildNodeTree(GameObject go, List<Node> nodeList, int depth)
+    {
+        SDFOperation op = go.GetComponent<SDFOperation>();
+        SDFShape shape = go.GetComponent<SDFShape>();
+
+        Node node = new Node();
+        node.transform = Matrix4x4.TRS(go.transform.localPosition, go.transform.localRotation, go.transform.localScale).inverse;
+        node.type = 0;
+        node.depth = depth;
+
+        if (op)
         {
-            material.SetVectorArray("_SDFShapeParameters", data);
-            material.SetMatrixArray("_SDFShapeTransforms", transforms);
+            node.type = 0;
+            node.parameters = (int)op.operationType;
+        }
+        else if (shape)
+        {
+            node.type = 1;
+            node.parameters = (int)shape.shapeType;
         }
 
-        material.SetInt("_SDFShapeCount", count);
+        nodeList.Add(node);
+
+        foreach(Transform child in go.transform)
+            BuildNodeTree(child.gameObject, nodeList, depth+1);
+    }
+
+    public void LateUpdate()
+    {
+        RebuildSceneData();        
     }
 }
