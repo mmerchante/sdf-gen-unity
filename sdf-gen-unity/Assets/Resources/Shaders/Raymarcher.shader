@@ -24,7 +24,7 @@
 			#define TAU (2*PI)
 			#define PHI (sqrt(5)*0.5 + 0.5)
 
-			#define MAX_STEPS 50
+			#define MAX_STEPS 40
 			#define MAX_STEPS_F float(MAX_STEPS)
 
 			#define MAX_DISTANCE 25.0
@@ -68,6 +68,8 @@
 				int type; 
 				int parameters;
 				int depth;
+				int domainDistortionType;
+				float3 domainDistortion;
 			};
 
 			uniform int _SDFShapeCount;
@@ -120,6 +122,18 @@
 
 			#define MAX_STACK 32
 
+			float3 modc(float3 a, float3 b) { return a - b * floor(a / b); }
+
+			float3 domainRepeat(float3 p, float3 size)
+			{
+				return fmod(abs(p) + size * .5, size) - size * .5;
+			}
+
+			float domainRepeat1D(float p, float size)
+			{
+				return fmod(abs(p) + size * .5, size) - size * .5;
+			}
+
 			// This is a straightforward approach to previsualize the actual sdf inside Unity
 			// that is dynamic and general enough to edit a scene in a reasonable framerate.
 			// An optimized version would have specific code knowing each shape, removing the loop, etc.
@@ -137,6 +151,7 @@
 				// Although ideally we could bake final transforms into the leaf shapes,
 				// Domain transformations require the proper transform at the level of that node,
 				// so if we want full flexibility, we need to compose them.
+				[loop]
 				while(currentIndex < _SDFShapeCount && stackTop > 0 && stackTop < MAX_STACK)
 				{
 					Node node = _SceneTree[currentIndex];
@@ -160,7 +175,16 @@
 						// We initialize the node
 						stack[stackTop].index = currentIndex;
 						stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
-						stack[stackTop].pos = mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
+						stack[stackTop].pos =  mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
+
+						if (node.domainDistortionType == 1)
+							stack[stackTop].pos = domainRepeat(stack[stackTop].pos, node.domainDistortion);
+						else if (node.domainDistortionType == 2)
+							stack[stackTop].pos.x = domainRepeat1D(stack[stackTop].pos.x, node.domainDistortion.x);
+						else if (node.domainDistortionType == 3)
+							stack[stackTop].pos.y = domainRepeat1D(stack[stackTop].pos.y, node.domainDistortion.y);
+						else if (node.domainDistortionType == 4)
+							stack[stackTop].pos.z = domainRepeat1D(stack[stackTop].pos.z, node.domainDistortion.z);
 						
 						stackTop++;
 					} 
@@ -255,6 +279,11 @@
 				}
 
 				return 0.0;
+			}
+
+			float3 hash3(float n)
+			{
+				return frac(sin(float3(n, n + 1.0, n + 2.0))*float3(43758.5453123, 22578.1459123, 19642.3490423));
 			}
 
 			float4 frag (v2f i) : SV_Target

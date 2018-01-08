@@ -19,6 +19,8 @@ public class SDFGenerator : MonoBehaviour
         public int type;
         public int parameters;
         public int depth;
+        public int domainDistortionType;
+        public Vector3 domainDistortion;
     }
 
     public void Awake()
@@ -61,11 +63,15 @@ public class SDFGenerator : MonoBehaviour
         node.transform = Matrix4x4.TRS(go.transform.localPosition, go.transform.localRotation, go.transform.localScale).inverse;
         node.type = 0;
         node.depth = depth;
+        node.domainDistortionType = 0;
+        node.domainDistortion = Vector3.one;
 
         if (op)
         {
             node.type = 0;
             node.parameters = (int)op.operationType;
+            node.domainDistortionType = (int)op.distortionType;
+            node.domainDistortion = op.domainRepeat; // For now...
         }
         else if (shape)
         {
