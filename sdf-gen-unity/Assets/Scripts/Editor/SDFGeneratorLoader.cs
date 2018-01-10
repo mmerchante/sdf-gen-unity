@@ -11,7 +11,10 @@ public class SDFGeneratorLoader
         EditorApplication.update -= UpdateRaymarcher;
         EditorApplication.update += UpdateRaymarcher;
 
+        Undo.postprocessModifications -= OnPostProcessModifications;
         Undo.postprocessModifications += OnPostProcessModifications;
+
+        Undo.undoRedoPerformed -= UpdateRaymarcher;
         Undo.undoRedoPerformed += UpdateRaymarcher;
     }
 

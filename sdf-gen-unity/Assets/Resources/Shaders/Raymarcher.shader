@@ -24,7 +24,7 @@
 			#define TAU (2*PI)
 			#define PHI (sqrt(5)*0.5 + 0.5)
 
-			#define MAX_STEPS 5
+			#define MAX_STEPS 10
 			#define MAX_STEPS_F float(MAX_STEPS)
 
 			#define MAX_DISTANCE 100.0
@@ -165,7 +165,20 @@
 					// Backtrack
 					if (node.depth <= parentNode.depth)
 					{
-						stack[stackTop - 2].sdf = min(stack[stackTop - 2].sdf, parentStackData.sdf);
+						StackData grandparentStackData = stack[stackTop - 2];
+						Node grandparentNode = _SceneTree[parentStackData.index];
+
+						int opType = grandparentNode.parameters;
+						float dd = parentStackData.sdf;
+
+						if (opType == 0)
+							dd = min(grandparentStackData.sdf, dd);
+						else if (opType == 1)
+							dd = max(-grandparentStackData.sdf, dd);
+						else if (opType == 2)
+							dd = max(grandparentStackData.sdf, dd);
+
+						stack[stackTop - 2].sdf = dd;
 						stackTop--;
 						continue;
 					}
@@ -175,7 +188,7 @@
 					{
 						// We initialize the node
 						stack[stackTop].index = currentIndex;
-						stack[stackTop].sdf = node.parameters == 2 || node.parameters == 1 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
+						stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
 						stack[stackTop].pos =  mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 
 						if (node.domainDistortionType == 1)
@@ -194,7 +207,7 @@
 						int parameters = node.parameters;
 						float3 wsPos = mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 
-						float dd = 1000.0;
+						float dd = 0.0;
 
 						if (parameters == 1)
 							dd = wsPos.y;
@@ -207,9 +220,9 @@
 
 						int opType = parentNode.parameters;
 
-						if(opType == 0)
+						if (opType == 0)
 							dd = min(parentStackData.sdf, dd);
-						else if(opType == 1)
+						else if (opType == 1)
 							dd = max(-parentStackData.sdf, dd);
 						else if (opType == 2)
 							dd = max(parentStackData.sdf, dd);
@@ -224,7 +237,20 @@
 				// Last backtrack
 				while (stackTop > 1)
 				{
-					stack[stackTop - 2].sdf = min(stack[stackTop - 2].sdf, stack[stackTop - 1].sdf);
+					StackData parentStackData = stack[stackTop - 2];
+					Node parentNode = _SceneTree[parentStackData.index];
+
+					int opType = parentNode.parameters;
+					float dd = stack[stackTop - 1].sdf;
+
+					if (opType == 0)
+						dd = min(parentStackData.sdf, dd);
+					else if (opType == 1)
+						dd = max(-parentStackData.sdf, dd);
+					else if (opType == 2)
+						dd = max(parentStackData.sdf, dd);
+
+					stack[stackTop - 2].sdf = dd;
 					--stackTop;
 				}
 
@@ -247,7 +273,7 @@
 			{
 				Intersection outData;
 				outData.materialID = MATERIAL_NONE;
-				outData.sdf = 0.0;
+				outData.sdf = MIN_DISTANCE;
 				
 				uint2 index = uint2(_ScreenParams.xy * uv);
 				outData.totalDistance = _AccumulationBuffer.Load(index) - EPSILON;
@@ -280,7 +306,7 @@
 					// Normals are expensive!
 					float3 lightDir = -_WorldSpaceLightPos0.xyz;
 					float3 dir = normalize(camera.direction * .5 - lightDir);
-					float cosTheta = sdf(p - dir * (.25 + hash(length(p)) * .02)) / .25;
+					float cosTheta = dot(sdfNormal(p, EPSILON_NORMAL), lightDir);// sdf(p - dir * (.25 + hash(length(p)) * .02)) / .25;
 					return cosTheta;
 				}
 
