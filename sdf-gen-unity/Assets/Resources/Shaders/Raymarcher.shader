@@ -166,7 +166,7 @@
 					if (node.depth <= parentNode.depth)
 					{
 						StackData grandparentStackData = stack[stackTop - 2];
-						Node grandparentNode = _SceneTree[parentStackData.index];
+						Node grandparentNode = _SceneTree[grandparentStackData.index];
 
 						int opType = grandparentNode.parameters;
 						float dd = parentStackData.sdf;
@@ -188,7 +188,7 @@
 					{
 						// We initialize the node
 						stack[stackTop].index = currentIndex;
-						stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
+						stack[stackTop].sdf = -1.0;// node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
 						stack[stackTop].pos =  mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 
 						if (node.domainDistortionType == 1)
@@ -218,14 +218,17 @@
 						else if (parameters == 4)
 							dd = fCylinder(wsPos);
 
-						int opType = parentNode.parameters;
+						if (parentStackData.sdf > -.5)
+						{
+							int opType = parentNode.parameters;
 
-						if (opType == 0)
-							dd = min(parentStackData.sdf, dd);
-						else if (opType == 1)
-							dd = max(-parentStackData.sdf, dd);
-						else if (opType == 2)
-							dd = max(parentStackData.sdf, dd);
+							if (opType == 0)
+								dd = min(parentStackData.sdf, dd);
+							else if (opType == 1)
+								dd = max(-parentStackData.sdf, dd);
+							else if (opType == 2)
+								dd = max(parentStackData.sdf, dd);
+						}
 
 						// For now, union
 						stack[stackTop - 1].sdf = dd;
@@ -278,15 +281,19 @@
 				uint2 index = uint2(_ScreenParams.xy * uv);
 				outData.totalDistance = _AccumulationBuffer.Load(index) - EPSILON;
 
-				for (int j = 0; j < MAX_STEPS; ++j)
+				if (outData.totalDistance < MAX_DISTANCE)
 				{
-					float3 p = camera.origin + camera.direction * outData.totalDistance;
-					outData.sdf = sdf(p);
-					
-					outData.totalDistance += outData.sdf;
 
-					if (outData.sdf < EPSILON || outData.totalDistance > MAX_DISTANCE)
-						break;
+					for (int j = 0; j < MAX_STEPS; ++j)
+					{
+						float3 p = camera.origin + camera.direction * outData.totalDistance;
+						outData.sdf = sdf(p);
+
+						outData.totalDistance += outData.sdf;
+
+						if (outData.sdf < EPSILON || outData.totalDistance > MAX_DISTANCE)
+							break;
+					}
 				}
 
 				if (outData.sdf < EPSILON)
