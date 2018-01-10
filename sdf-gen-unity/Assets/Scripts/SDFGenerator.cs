@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [ExecuteInEditMode]
@@ -12,6 +13,11 @@ public class SDFGenerator : MonoBehaviour
 
     private Material material;
     private ComputeBuffer nodeBuffer;
+    //private ComputeBuffer accumulationBuffer;
+    private RenderTexture accumulationBuffer;
+
+    private Camera currentCamera;
+    private Matrix4x4 camTransform;
 
     public struct Node
     {
@@ -27,7 +33,7 @@ public class SDFGenerator : MonoBehaviour
     {
         this.material = quadRenderer.sharedMaterial;
     }
-
+    
     private void RebuildSceneData()
     {
         SDFShape[] shapes = GetComponentsInChildren<SDFShape>();
@@ -54,8 +60,46 @@ public class SDFGenerator : MonoBehaviour
             nodeBuffer.Release();
     }
 
+    private void RebuildAccumulationBuffer(bool force)
+    {
+        Camera cam = Camera.current;
+
+        if (cam)
+        {
+            int pixels = (int)(cam.pixelRect.width * cam.pixelRect.height);
+
+            if (force || camTransform != cam.transform.localToWorldMatrix || accumulationBuffer == null || accumulationBuffer.width * accumulationBuffer.height != pixels)
+            {
+                currentCamera = cam;
+
+                if (accumulationBuffer != null)
+                    accumulationBuffer.Release();
+
+                accumulationBuffer = new RenderTexture((int)cam.pixelRect.width, (int)cam.pixelRect.height, 0, RenderTextureFormat.RFloat);
+                accumulationBuffer.useMipMap = false;
+                accumulationBuffer.autoGenerateMips = false;
+                accumulationBuffer.enableRandomWrite = true;
+                accumulationBuffer.Create();
+
+                material.SetTexture("_AccumulationBuffer", accumulationBuffer);
+
+                camTransform = cam.transform.localToWorldMatrix;
+
+                if (accumulationBuffer)
+                {
+                    Graphics.SetRandomWriteTarget(1, accumulationBuffer);
+                    //Graphics.SetRenderTarget(null);
+                    //Graphics.ClearRandomWriteTargets();
+                }
+            }
+        }
+    }
+
     private void BuildNodeTree(GameObject go, List<Node> nodeList, int depth)
     {
+        if (!go.activeInHierarchy)
+            return;
+
         SDFOperation op = go.GetComponent<SDFOperation>();
         SDFShape shape = go.GetComponent<SDFShape>();
 
@@ -87,6 +131,11 @@ public class SDFGenerator : MonoBehaviour
 
     public void LateUpdate()
     {
-        RebuildSceneData();        
+        RebuildSceneData();
+    }
+
+    public void UpdateRaymarcher(bool force)
+    {
+        RebuildAccumulationBuffer(force);
     }
 }

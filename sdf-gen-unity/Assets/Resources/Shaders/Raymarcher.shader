@@ -24,10 +24,10 @@
 			#define TAU (2*PI)
 			#define PHI (sqrt(5)*0.5 + 0.5)
 
-			#define MAX_STEPS 40
+			#define MAX_STEPS 5
 			#define MAX_STEPS_F float(MAX_STEPS)
 
-			#define MAX_DISTANCE 25.0
+			#define MAX_DISTANCE 100.0
 			#define MIN_DISTANCE .5
 			#define EPSILON .025
 			#define EPSILON_NORMAL .01
@@ -71,9 +71,10 @@
 				int domainDistortionType;
 				float3 domainDistortion;
 			};
-
+			 
 			uniform int _SDFShapeCount;
-			StructuredBuffer<Node> _SceneTree : register(t1);
+			uniform StructuredBuffer<Node> _SceneTree : register(t1);
+			uniform RWTexture2D<float> _AccumulationBuffer : register(u1);
 
 			v2f vert (appdata v)
 			{
@@ -174,7 +175,7 @@
 					{
 						// We initialize the node
 						stack[stackTop].index = currentIndex;
-						stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
+						stack[stackTop].sdf = node.parameters == 2 || node.parameters == 1 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
 						stack[stackTop].pos =  mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 
 						if (node.domainDistortionType == 1)
@@ -241,12 +242,15 @@
 
 				return normalize(float3(dX, dY, dZ));
 			}
-			Intersection Raymarch(Camera camera)
+
+			Intersection Raymarch(Camera camera, float2 uv)
 			{
 				Intersection outData;
-				outData.sdf = 0.0;
 				outData.materialID = MATERIAL_NONE;
-				outData.totalDistance = 0.0;
+				outData.sdf = 0.0;
+				
+				uint2 index = uint2(_ScreenParams.xy * uv);
+				outData.totalDistance = _AccumulationBuffer.Load(index) - EPSILON;
 
 				for (int j = 0; j < MAX_STEPS; ++j)
 				{
@@ -261,6 +265,8 @@
 
 				if (outData.sdf < EPSILON)
 					outData.materialID = 1;
+
+				_AccumulationBuffer[index] = lerp(_AccumulationBuffer.Load(index), outData.totalDistance, .75);
 
 				return outData;
 			}
@@ -292,7 +298,7 @@
 				camera.origin = _WorldSpaceCameraPos;
 				camera.direction = normalize(i.worldSpacePosition - camera.origin);
 
-				Intersection isect = Raymarch(camera);
+				Intersection isect = Raymarch(camera, i.uv);
 				float3 color = Render(camera, isect, i.uv);
 
 				return float4(pow(color, .45454), 1.0);
