@@ -13,7 +13,6 @@ public class SDFGenerator : MonoBehaviour
 
     private Material material;
     private ComputeBuffer nodeBuffer;
-    //private ComputeBuffer accumulationBuffer;
     private RenderTexture accumulationBuffer;
 
     private Camera currentCamera;
@@ -73,7 +72,11 @@ public class SDFGenerator : MonoBehaviour
                 currentCamera = cam;
 
                 if (accumulationBuffer != null)
+                {
                     accumulationBuffer.Release();
+                    DestroyImmediate(accumulationBuffer);
+                    System.GC.Collect();
+                }
 
                 accumulationBuffer = new RenderTexture((int)cam.pixelRect.width, (int)cam.pixelRect.height, 0, RenderTextureFormat.RFloat);
                 accumulationBuffer.useMipMap = false;
@@ -91,6 +94,8 @@ public class SDFGenerator : MonoBehaviour
                     //Graphics.SetRenderTarget(null);
                     //Graphics.ClearRandomWriteTargets();
                 }
+
+                Debug.Log("Updating...");
             }
         }
     }

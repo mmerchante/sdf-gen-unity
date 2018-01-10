@@ -24,7 +24,7 @@
 			#define TAU (2*PI)
 			#define PHI (sqrt(5)*0.5 + 0.5)
 
-			#define MAX_STEPS 10
+			#define MAX_STEPS 5
 			#define MAX_STEPS_F float(MAX_STEPS)
 
 			#define MAX_DISTANCE 100.0
@@ -188,7 +188,7 @@
 					{
 						// We initialize the node
 						stack[stackTop].index = currentIndex;
-						stack[stackTop].sdf = -1.0;// node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
+						stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
 						stack[stackTop].pos =  mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 
 						if (node.domainDistortionType == 1)
@@ -218,17 +218,14 @@
 						else if (parameters == 4)
 							dd = fCylinder(wsPos);
 
-						if (parentStackData.sdf > -.5)
-						{
-							int opType = parentNode.parameters;
+						int opType = parentNode.parameters;
 
-							if (opType == 0)
-								dd = min(parentStackData.sdf, dd);
-							else if (opType == 1)
-								dd = max(-parentStackData.sdf, dd);
-							else if (opType == 2)
-								dd = max(parentStackData.sdf, dd);
-						}
+						if (opType == 0)
+							dd = min(parentStackData.sdf, dd);
+						else if (opType == 1)
+							dd = max(-parentStackData.sdf, dd);
+						else if (opType == 2)
+							dd = max(parentStackData.sdf, dd);
 
 						// For now, union
 						stack[stackTop - 1].sdf = dd;
@@ -283,7 +280,6 @@
 
 				if (outData.totalDistance < MAX_DISTANCE)
 				{
-
 					for (int j = 0; j < MAX_STEPS; ++j)
 					{
 						float3 p = camera.origin + camera.direction * outData.totalDistance;
@@ -299,7 +295,7 @@
 				if (outData.sdf < EPSILON)
 					outData.materialID = 1;
 
-				_AccumulationBuffer[index] = lerp(_AccumulationBuffer.Load(index), outData.totalDistance, .75);
+				_AccumulationBuffer[index] = lerp(_AccumulationBuffer.Load(index), outData.totalDistance, .95);
 
 				return outData;
 			}
@@ -313,7 +309,8 @@
 					// Normals are expensive!
 					float3 lightDir = -_WorldSpaceLightPos0.xyz;
 					float3 dir = normalize(camera.direction * .5 - lightDir);
-					float cosTheta = dot(sdfNormal(p, EPSILON_NORMAL), lightDir);// sdf(p - dir * (.25 + hash(length(p)) * .02)) / .25;
+					float cosTheta = sdf(p - dir * (.25 + hash(length(p)) * .02)) / .25;
+					//dot(sdfNormal(p, .1), lightDir) * .5 + .5;// 
 					return cosTheta;
 				}
 
