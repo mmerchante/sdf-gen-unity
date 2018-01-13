@@ -114,6 +114,21 @@
 				return frac(sin(n)*1751.5453);
 			}
 
+			float mod(float x, float y)
+			{
+				return x - y * floor(x / y);
+			}
+
+			// hg
+			float2 pModPolar(float2 p, float repetitions) {
+				float angle = 2.0 * PI / repetitions;
+				float a = atan2(p.y, p.x) + angle * .5;
+				float r = length(p);
+
+				a = mod(a, angle) - angle * .5;
+				return float2(cos(a), sin(a)) * r;
+			}
+
 			struct StackData
 			{
 				int index;
@@ -354,6 +369,12 @@
 							stack[stackTop].pos.y = domainRepeat1D(stack[stackTop].pos.y, node.domainDistortion.y);
 						else if (node.domainDistortionType == 4)
 							stack[stackTop].pos.z = domainRepeat1D(stack[stackTop].pos.z, node.domainDistortion.z);
+						else if (node.domainDistortionType == 5)
+							stack[stackTop].pos.yz = pModPolar(stack[stackTop].pos.yz, node.domainDistortion.x);
+						else if(node.domainDistortionType == 6)
+							stack[stackTop].pos.xz = pModPolar(stack[stackTop].pos.xz, node.domainDistortion.x);
+						else if (node.domainDistortionType == 7)
+							stack[stackTop].pos.xy = pModPolar(stack[stackTop].pos.xy, node.domainDistortion.x);
 						
 						stackTop++;
 					} 
@@ -393,7 +414,7 @@
 					--stackTop;
 				}
 
-				return stack[0].sdf;
+				return stack[0].sdf * .5;
 			}
 
 			// Don't use this ;)

@@ -17,7 +17,10 @@ public class SDFOperation : MonoBehaviour
         Repeat3D = 1,
         RepeatX = 2,
         RepeatY = 3,
-        RepeatZ = 4
+        RepeatZ = 4,
+        RepeatPolarX = 5,
+        RepeatPolarY = 6,
+        RepeatPolarZ = 7,
     }
 
     public OperationType operationType = OperationType.Union;
