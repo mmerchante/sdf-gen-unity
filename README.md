@@ -5,6 +5,8 @@ A signed distance function generator running inside Unity. An example result ray
 
 It lets the user make and combine distance functions to make interesting scenes, inside an intuitive editor such as Unity. It tries to optimize the code for specific known cases (for example, it tries to prevent using matrices when dealing with planes), but it is far from complete.
 
+It also features a generic, dynamic raymarching renderer inside Unity's editor so that composing the final SDF is easy. However, because it is generic it is also very slow (unless using the optimized output code), so it uses an iterative approach to converge to the solution.
+
 As an example, it converts the following scene:
 
 ![](images/scene_hierarchy.png)
