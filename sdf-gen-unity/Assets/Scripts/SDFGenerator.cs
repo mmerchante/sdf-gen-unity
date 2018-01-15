@@ -287,12 +287,20 @@ public class SDFGenerator : MonoBehaviour
 
     private string GetShapeCode(SDFShape shape, string parentPosition)
     {
+        Vector3 offset = shape.transform.localPosition;
+        Vector3 up = shape.transform.localRotation * Vector3.up;
+        Vector3 right = shape.transform.localRotation * Vector3.right;
+        Vector3 forward = shape.transform.localRotation * Vector3.forward;
+
         switch (shape.shapeType)
         {
             case SDFShape.ShapeType.Plane:
-                Vector3 offset = shape.transform.localPosition;
-                Vector3 up = shape.transform.localRotation * Vector3.up;
                 return "dot("+ parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(up) + ")";
+            case SDFShape.ShapeType.FracturedPlane:
+                //string output = "dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(up) + ")";
+                //output += " + saturate(dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(right) + ") * .5) * .15";
+                //output += " + saturate(dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(forward) + ") * .5) * .15";
+                return "wsPos.y + saturate(wsPos.x * .5) * .1 + saturate(wsPos.z + .5) * .1";
             case SDFShape.ShapeType.Sphere:
                 return "length(wsPos) - .5";
             case SDFShape.ShapeType.Cube:

@@ -15,6 +15,7 @@ public class SDFShape : MonoBehaviour
         Cube = 3,
         Cylinder = 4,
         Mesh = 5,
+        FracturedPlane = 6,
     }
 
     public ShapeType shapeType = ShapeType.Sphere;
@@ -53,6 +54,7 @@ public class SDFShape : MonoBehaviour
             case ShapeType.None:
                 break;
             case ShapeType.Plane:
+            case ShapeType.FracturedPlane:
                 t = PrimitiveType.Plane;
                 break;
             case ShapeType.Sphere:
@@ -82,6 +84,7 @@ public class SDFShape : MonoBehaviour
             case ShapeType.None:
                 break;
             case ShapeType.Plane:
+            case ShapeType.FracturedPlane:
                 return new Vector4(transform.up.x, transform.up.y, transform.up.z, type);
             case ShapeType.Sphere:
                 return Vector4.one * type;
