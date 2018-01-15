@@ -17,6 +17,7 @@ public class SDFGenerator : MonoBehaviour
     public ShadingLanguage outputLanguage = ShadingLanguage.HLSL;
     public MeshRenderer quadRenderer;
     public GameObject root;
+    public bool verboseOutput = false;
 
     private Material material;
     private ComputeBuffer nodeBuffer;
@@ -97,8 +98,6 @@ public class SDFGenerator : MonoBehaviour
                     //Graphics.SetRenderTarget(null);
                     //Graphics.ClearRandomWriteTargets();
                 }
-
-                Debug.Log("Updating...");
             }
         }
     }
@@ -108,6 +107,11 @@ public class SDFGenerator : MonoBehaviour
         return "float";
     }
 
+    private string DeclareVector3ArrayVariable(string var, int size)
+    {
+        return GetVector3Identifier() + " " + var + "[" + size + "];\n";
+    }
+
     private string DeclareFloatArrayVariable(string var, int size)
     {
         return GetFloatIdentifier() + " " + var + "[" + size + "];\n";
@@ -115,7 +119,7 @@ public class SDFGenerator : MonoBehaviour
 
     private string DeclareVariable(string var, float value)
     {
-        return GetFloatIdentifier() + " " + var + " = " + value.ToString(".0#####") + ";\n";
+        return GetFloatIdentifier() + " " + var + " = " + ConstructVariable(value) +  ";\n";
     }
 
     private string GetMatrix4x4Identifier()
@@ -174,42 +178,53 @@ public class SDFGenerator : MonoBehaviour
         if(outputLanguage == ShadingLanguage.GLSL)
             m = m.transpose;
 
-        output += m.m00.ToString(".0#####") + ", ";
-        output += m.m01.ToString(".0#####") + ", ";
-        output += m.m02.ToString(".0#####") + ", ";
-        output += m.m03.ToString(".0#####") + ", ";
+        output += ConstructVariable(m.m00) + ", ";
+        output += ConstructVariable(m.m01) + ", ";
+        output += ConstructVariable(m.m02) + ", ";
+        output += ConstructVariable(m.m03) + ", ";
 
-        output += m.m10.ToString(".0#####") + ", ";
-        output += m.m11.ToString(".0#####") + ", ";
-        output += m.m12.ToString(".0#####") + ", ";
-        output += m.m13.ToString(".0#####") + ", ";
-
-        output += m.m20.ToString(".0#####") + ", ";
-        output += m.m21.ToString(".0#####") + ", ";
-        output += m.m22.ToString(".0#####") + ", ";
-        output += m.m23.ToString(".0#####") + ", ";
-
-        output += m.m30.ToString(".0#####") + ", ";
-        output += m.m31.ToString(".0#####") + ", ";
-        output += m.m32.ToString(".0#####") + ", ";
-        output += m.m33.ToString(".0#####") + ")";
+        output += ConstructVariable(m.m10) + ", ";
+        output += ConstructVariable(m.m11) + ", ";
+        output += ConstructVariable(m.m12) + ", ";
+        output += ConstructVariable(m.m13) + ", ";
+        
+        output += ConstructVariable(m.m20) + ", ";
+        output += ConstructVariable(m.m21) + ", ";
+        output += ConstructVariable(m.m22) + ", ";
+        output += ConstructVariable(m.m23) + ", ";
+        
+        output += ConstructVariable(m.m30) + ", ";
+        output += ConstructVariable(m.m31) + ", ";
+        output += ConstructVariable(m.m32) + ", ";
+        output += ConstructVariable(m.m33) + ")";
         
         return output;
     }
 
     private string ConstructVariable(Vector3 p)
     {
-        return GetVector3Identifier() + "(" + p.x.ToString(".0#####") + "," + p.y.ToString(".0#####") + "," + p.z.ToString(".0#####") + ")";
+        return GetVector3Identifier() + "(" + ConstructVariable(p.x) + "," + ConstructVariable(p.y) + "," + ConstructVariable(p.z) + ")";
+    }
+
+    private string ConstructVariable(float f)
+    {
+        return f.ToString(".0##");
     }
 
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
-            Debug.Log(GenerateCode());
+        {
+            Debug.Log("Copied to clipboard");
+            GUIUtility.systemCopyBuffer = GenerateCode();
+        }
     }
 
     private string GetTabs(int indent)
     {
+        if (!verboseOutput)
+            indent = 1;
+
         string output = "";
 
         while (indent-- > 0)
@@ -237,8 +252,10 @@ public class SDFGenerator : MonoBehaviour
             nodeMap[nodes[i]] = i;
 
         // The stack is just an easy way to deal with node states
-        output += GetTabs(1) + DeclareFloatArrayVariable("stack", nodes.Length);
         output += GetTabs(1) + DeclareVariable("wsPos", Vector3.zero);
+        output += GetTabs(1) + DeclareFloatArrayVariable("stack", nodes.Length);
+        output += GetTabs(1) + DeclareVector3ArrayVariable("pStack", nodes.Length);
+        output += GetTabs(1) + "pStack[0] = p;\n"; // Initialize root position
 
         output += GenerateCodeForNode(nodeMap, root, 0);
 
@@ -268,14 +285,14 @@ public class SDFGenerator : MonoBehaviour
         }
     }
 
-    private string GetShapeCode(SDFShape shape)
+    private string GetShapeCode(SDFShape shape, string parentPosition)
     {
         switch (shape.shapeType)
         {
             case SDFShape.ShapeType.Plane:
-                Vector3 offset = shape.transform.position;
-                Vector3 up = shape.transform.up;
-                return "dot(p - " + ConstructVariable(offset) + ", " + ConstructVariable(up) + ")";
+                Vector3 offset = shape.transform.localPosition;
+                Vector3 up = shape.transform.localRotation * Vector3.up;
+                return "dot("+ parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(up) + ")";
             case SDFShape.ShapeType.Sphere:
                 return "length(wsPos) - .5";
             case SDFShape.ShapeType.Cube:
@@ -308,14 +325,90 @@ public class SDFGenerator : MonoBehaviour
 
         if (op)
         {
-            output += GetTabs(depth + 1) + "{\n";
+            if(verboseOutput)
+                output += GetTabs(depth + 1) + "{\n";
 
             int stackIndex = nodeMap[op];
+            string nodeStackPosition = "pStack[" + stackIndex + "]";
+
+            Matrix4x4 localInverse = Matrix4x4.TRS(op.transform.localPosition, op.transform.localRotation, op.transform.localScale).inverse;
+
+            if (localInverse != Matrix4x4.identity)
+            {
+                string sourcePosition = nodeStackPosition;
+
+                if (depth > 0)
+                {
+                    int parentStackIndex = nodeMap[go.transform.parent.gameObject.GetComponent<SDFOperation>()];
+                    sourcePosition =  "pStack[" + parentStackIndex + "]";
+                }
+
+                if (op.transform.localRotation == Quaternion.identity)
+                {
+                    if (op.transform.localScale != Vector3.one)
+                    {
+                        Vector3 scale = op.transform.localScale;
+                        Vector3 invScale = new Vector3(1f / scale.x, 1f / scale.y, 1f / scale.z);
+                        output += GetTabs(depth + 2) + nodeStackPosition + " = (" + sourcePosition + " * " + ConstructVariable(invScale) + ") - " + ConstructVariable(op.transform.localPosition) + ";\n";
+                    }
+                    else
+                    {
+                        output += GetTabs(depth + 2) + nodeStackPosition + " = " + sourcePosition + " - " + ConstructVariable(op.transform.localPosition) + ";\n";
+                    }
+                }
+                else
+                {
+                    output += GetTabs(depth + 2) + nodeStackPosition + " = " + MultiplyMatrixVector(ConstructVariable(localInverse), sourcePosition) + ";\n";
+                }
+            }
+            else
+            {
+                if(verboseOutput)
+                    output += GetTabs(depth + 2) + "// Transform optimized\n";
+
+                if (depth > 0)
+                {
+                    int parentStackIndex = nodeMap[go.transform.parent.gameObject.GetComponent<SDFOperation>()];
+                    output += GetTabs(depth + 2) + nodeStackPosition + " = " + "pStack[" + parentStackIndex + "];\n";
+                }
+            }
+
+            if(op.distortionType != SDFOperation.DomainDistortion.None)
+            {
+                switch (op.distortionType)
+                {
+                    case SDFOperation.DomainDistortion.Repeat3D:
+                        output += GetTabs(depth + 2) + nodeStackPosition + " = domainRepeat(" + nodeStackPosition + " , " + ConstructVariable(op.domainRepeat) + ");\n";
+                        break;
+                    case SDFOperation.DomainDistortion.RepeatX:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".x = domainRepeat1D(" + nodeStackPosition + ".x , " + ConstructVariable(op.domainRepeat.x) + ");\n";
+                        break;
+                    case SDFOperation.DomainDistortion.RepeatY:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".y = domainRepeat1D(" + nodeStackPosition + ".y , " + ConstructVariable(op.domainRepeat.y)+ ");\n";
+                        break;                                                                                                                                       
+                    case SDFOperation.DomainDistortion.RepeatZ:                                                                                                      
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".z = domainRepeat1D(" + nodeStackPosition + ".z , " + ConstructVariable(op.domainRepeat.z)+ ");\n";
+                        break;
+                    case SDFOperation.DomainDistortion.RepeatPolarX:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".yz = pModPolar(" + nodeStackPosition + ".yz , " + ConstructVariable(op.domainRepeat.x) + ");\n";
+                        break;
+                    case SDFOperation.DomainDistortion.RepeatPolarY:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".xz = pModPolar(" + nodeStackPosition + ".xz , " + ConstructVariable(op.domainRepeat.x) + ");\n";
+                        break;
+                    case SDFOperation.DomainDistortion.RepeatPolarZ:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".xy = pModPolar(" + nodeStackPosition + ".xy , " + ConstructVariable(op.domainRepeat.x) + ");\n";
+                        break;
+                }
+            }
+
             bool first = true;
 
             foreach (Transform child in go.transform)
             {
                 GameObject childGO = child.gameObject;
+
+                if (!childGO.activeInHierarchy)
+                    continue;
                                 
                 if (childGO.GetComponent<SDFOperation>())
                 {
@@ -332,12 +425,11 @@ public class SDFGenerator : MonoBehaviour
                 else if(childGO.GetComponent<SDFShape>())
                 {
                     SDFShape shape = childGO.GetComponent<SDFShape>();
-                    string shapeCode = GetShapeCode(shape);
+                    Matrix4x4 localShapeInverse = Matrix4x4.TRS(shape.transform.localPosition, shape.transform.localRotation, shape.transform.localScale).inverse;
+                    string shapeCode = GetShapeCode(shape, nodeStackPosition);
 
                     if (UseTransform(shape))
-                        output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector(ConstructVariable(shape.transform.worldToLocalMatrix), "p") + ";\n";
-                    else
-                        output += GetTabs(depth + 2) + "wsPos = p;\n";
+                        output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector(ConstructVariable(localShapeInverse), nodeStackPosition) + ";\n";
 
                     output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
 
@@ -354,7 +446,8 @@ public class SDFGenerator : MonoBehaviour
                 first = false;
             }
 
-            output += GetTabs(depth + 1) + "}\n";
+            if(verboseOutput)
+                output += GetTabs(depth + 1) + "}\n";
         }
 
         return output;
