@@ -7,6 +7,8 @@ It lets the user make and combine distance functions to make interesting scenes,
 
 It also features a generic, dynamic raymarching renderer inside Unity's editor so that composing the final SDF is easy. However, because it is generic it is also very slow (unless using the optimized output code), so it uses an iterative approach to converge to the solution.
 
+It can output GLSL and HLSL code.
+
 As an example, it converts the following scene:
 
 ![](images/scene_hierarchy.png)
