@@ -1,7 +1,7 @@
 ![](images/soulstone.gif)
 
 # sdf-gen-unity
-A signed distance function generator running inside Unity. An example result raymarched scene can be found [here].(https://www.shadertoy.com/view/XtSfDD)
+A signed distance function generator running inside Unity. An example result raymarched scene can be found [here](https://www.shadertoy.com/view/XtSfDD).
 
 It lets the user make and combine distance functions to make interesting scenes, inside an intuitive editor such as Unity. It tries to optimize the code for specific known cases (for example, it tries to prevent using matrices when dealing with planes), but it is far from complete.
 
