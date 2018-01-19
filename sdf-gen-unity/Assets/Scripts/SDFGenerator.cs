@@ -125,12 +125,12 @@ public class SDFGenerator : MonoBehaviour
 
     private string DeclareConstMatrixArrayVariable(string var, List<Matrix4x4> matrices)
     {
-        string output = "const " + GetMatrix4x4Identifier() + " " + var + "[" + matrices.Count + "] = {\n";
+        string output = "const " + GetMatrix4x4Identifier() + " " + var + "[" + matrices.Count + "] = " + GetMatrix4x4Identifier() + "[" + matrices.Count + "](\n";
 
         for (int i = 0; i < matrices.Count; ++i)
             output += GetTabs(1) + ConstructVariable(matrices[i]) + (i < matrices.Count - 1 ? ",\n" : "\n");
 
-        output += "}\n";
+        output += ");\n";
         return output;
     }
 
@@ -517,7 +517,6 @@ public class SDFGenerator : MonoBehaviour
                         Matrix4x4 localShapeInverse = Matrix4x4.TRS(shape.transform.localPosition, shape.transform.localRotation, shape.transform.localScale).inverse;
                         string matrixVariable = "tr[" + matrices.Count + "]";
                         matrices.Add(localShapeInverse);
-
 
                         if (transformArray)
                             output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector4(matrixVariable, nodeStackPosition) + ".xyz;\n";
