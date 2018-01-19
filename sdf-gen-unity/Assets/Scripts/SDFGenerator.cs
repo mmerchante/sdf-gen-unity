@@ -107,6 +107,11 @@ public class SDFGenerator : MonoBehaviour
         return "float";
     }
 
+    private string DeclareVector4ArrayVariable(string var, int size)
+    {
+        return GetVector4Identifier() + " " + var + "[" + size + "];\n";
+    }
+
     private string DeclareVector3ArrayVariable(string var, int size)
     {
         return GetVector3Identifier() + " " + var + "[" + size + "];\n";
@@ -201,6 +206,12 @@ public class SDFGenerator : MonoBehaviour
         return output;
     }
 
+
+    private string ConstructVariable(Vector4 p)
+    {
+        return GetVector4Identifier() + "(" + ConstructVariable(p.x) + "," + ConstructVariable(p.y) + "," + ConstructVariable(p.z) + "," + ConstructVariable(p.w) + ")";
+    }
+
     private string ConstructVariable(Vector3 p)
     {
         return GetVector3Identifier() + "(" + ConstructVariable(p.x) + "," + ConstructVariable(p.y) + "," + ConstructVariable(p.z) + ")";
@@ -254,8 +265,8 @@ public class SDFGenerator : MonoBehaviour
         // The stack is just an easy way to deal with node states
         output += GetTabs(1) + DeclareVariable("wsPos", Vector3.zero);
         output += GetTabs(1) + DeclareFloatArrayVariable("stack", nodes.Length);
-        output += GetTabs(1) + DeclareVector3ArrayVariable("pStack", nodes.Length);
-        output += GetTabs(1) + "pStack[0] = p;\n"; // Initialize root position
+        output += GetTabs(1) + DeclareVector4ArrayVariable("pStack", nodes.Length);
+        output += GetTabs(1) + "pStack[0] = " + GetVector4Identifier() + "(p, 1.0);\n"; // Initialize root position
 
         output += GenerateCodeForNode(nodeMap, root, 0);
 
@@ -300,7 +311,7 @@ public class SDFGenerator : MonoBehaviour
                 //string output = "dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(up) + ")";
                 //output += " + saturate(dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(right) + ") * .5) * .15";
                 //output += " + saturate(dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(forward) + ") * .5) * .15";
-                return "wsPos.y + saturate(wsPos.x * .5) * .1 + saturate(wsPos.z + .5) * .1";
+                return "wsPos.y + (clamp(wsPos.x * .5, 0.0, 1.0) + clamp(wsPos.z + .5, 0.0, 1.0)) * 0.1";
             case SDFShape.ShapeType.Sphere:
                 return "length(wsPos) - .5";
             case SDFShape.ShapeType.Cube:
@@ -312,7 +323,20 @@ public class SDFGenerator : MonoBehaviour
         return "0.0"; // Worst case
     }
 
-    private string MultiplyMatrixVector(string m, string p)
+    private string MultiplyMatrixVector4(string m, string p)
+    {
+        switch (outputLanguage)
+        {
+            case ShadingLanguage.GLSL:
+                return "(" + m + " * " + p + ")";
+            case ShadingLanguage.HLSL:
+                return "mul(" + m + "," + p + ")";
+        }
+
+        return "";
+    }
+    
+    private string MultiplyMatrixVector3(string m, string p)
     {
         switch (outputLanguage)
         {
@@ -348,25 +372,31 @@ public class SDFGenerator : MonoBehaviour
                 if (depth > 0)
                 {
                     int parentStackIndex = nodeMap[go.transform.parent.gameObject.GetComponent<SDFOperation>()];
-                    sourcePosition =  "pStack[" + parentStackIndex + "]";
+                    sourcePosition = "pStack[" + parentStackIndex + "]";
                 }
 
                 if (op.transform.localRotation == Quaternion.identity)
                 {
+                    Vector4 offset = op.transform.localPosition;
+                    offset.w = 0f;
+
+                    if (verboseOutput)
+                        output += GetTabs(depth + 2) + "// Optimized rotation\n";
+
                     if (op.transform.localScale != Vector3.one)
                     {
                         Vector3 scale = op.transform.localScale;
-                        Vector3 invScale = new Vector3(1f / scale.x, 1f / scale.y, 1f / scale.z);
-                        output += GetTabs(depth + 2) + nodeStackPosition + " = (" + sourcePosition + " * " + ConstructVariable(invScale) + ") - " + ConstructVariable(op.transform.localPosition) + ";\n";
+                        Vector4 invScale = new Vector4(1f / scale.x, 1f / scale.y, 1f / scale.z, 1f);                        
+                        output += GetTabs(depth + 2) + nodeStackPosition + " = (" + sourcePosition + " * " + ConstructVariable(invScale) + ") - " + ConstructVariable(offset) + ";\n";
                     }
                     else
                     {
-                        output += GetTabs(depth + 2) + nodeStackPosition + " = " + sourcePosition + " - " + ConstructVariable(op.transform.localPosition) + ";\n";
+                        output += GetTabs(depth + 2) + nodeStackPosition + " = " + sourcePosition + " - " + ConstructVariable(offset) + ";\n";
                     }
                 }
                 else
                 {
-                    output += GetTabs(depth + 2) + nodeStackPosition + " = " + MultiplyMatrixVector(ConstructVariable(localInverse), sourcePosition) + ";\n";
+                    output += GetTabs(depth + 2) + nodeStackPosition + " = " + MultiplyMatrixVector4(ConstructVariable(localInverse), sourcePosition) + ";\n";
                 }
             }
             else
@@ -386,7 +416,7 @@ public class SDFGenerator : MonoBehaviour
                 switch (op.distortionType)
                 {
                     case SDFOperation.DomainDistortion.Repeat3D:
-                        output += GetTabs(depth + 2) + nodeStackPosition + " = domainRepeat(" + nodeStackPosition + " , " + ConstructVariable(op.domainRepeat) + ");\n";
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".xyz = domainRepeat(" + nodeStackPosition + ".xyz , " + ConstructVariable(op.domainRepeat) + ");\n";
                         break;
                     case SDFOperation.DomainDistortion.RepeatX:
                         output += GetTabs(depth + 2) + nodeStackPosition + ".x = domainRepeat1D(" + nodeStackPosition + ".x , " + ConstructVariable(op.domainRepeat.x) + ");\n";
@@ -434,10 +464,10 @@ public class SDFGenerator : MonoBehaviour
                 {
                     SDFShape shape = childGO.GetComponent<SDFShape>();
                     Matrix4x4 localShapeInverse = Matrix4x4.TRS(shape.transform.localPosition, shape.transform.localRotation, shape.transform.localScale).inverse;
-                    string shapeCode = GetShapeCode(shape, nodeStackPosition);
+                    string shapeCode = GetShapeCode(shape, nodeStackPosition + ".xyz");
 
                     if (UseTransform(shape))
-                        output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector(ConstructVariable(localShapeInverse), nodeStackPosition) + ";\n";
+                        output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector4(ConstructVariable(localShapeInverse), nodeStackPosition) + ".xyz;\n";
 
                     output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
 
