@@ -311,7 +311,7 @@ public class SDFGenerator : MonoBehaviour
                 //string output = "dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(up) + ")";
                 //output += " + saturate(dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(right) + ") * .5) * .15";
                 //output += " + saturate(dot(" + parentPosition + " - " + ConstructVariable(offset) + ", " + ConstructVariable(forward) + ") * .5) * .15";
-                return "wsPos.y + (clamp(wsPos.x * .5, 0.0, 1.0) + clamp(wsPos.z + .5, 0.0, 1.0)) * 0.1";
+                return "wsPos.y + (clamp(wsPos.x, 0.0, 2.0) * 0.05 + clamp(wsPos.z + .5, 0.0, 1.0) * .1)";
             case SDFShape.ShapeType.Sphere:
                 return "length(wsPos) - .5";
             case SDFShape.ShapeType.Cube:
@@ -440,6 +440,8 @@ public class SDFGenerator : MonoBehaviour
             }
 
             bool first = true;
+            bool carryOverFirstOp = false;
+            int carryOverOpIndex = -1;
 
             foreach (Transform child in go.transform)
             {
@@ -447,18 +449,35 @@ public class SDFGenerator : MonoBehaviour
 
                 if (!childGO.activeInHierarchy)
                     continue;
-                                
+
+                int currentIndex = stackIndex;
+
+                if (carryOverFirstOp)
+                    currentIndex = carryOverOpIndex;
+
                 if (childGO.GetComponent<SDFOperation>())
                 {
                     output += GenerateCodeForNode(nodeMap, childGO, depth + 1);
                     int childStackIndex = nodeMap[childGO.GetComponent<SDFOperation>()];
 
-                    output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
-
                     if (first)
-                        output += "stack[" + childStackIndex + "];\n";
+                    {
+                        carryOverFirstOp = true;
+                        carryOverOpIndex = childStackIndex;
+
+                        if(verboseOutput)
+                            output += GetTabs(depth + 2) + "// Optimized first operation carry over\n";
+
+                        //output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
+                        //output += "stack[" + childStackIndex + "];\n";
+                    }
                     else
-                        output += GetOperationCode((int)op.operationType, "stack[" + stackIndex + "]", "stack[" + childStackIndex + "]") + ";\n";
+                    {
+                        output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
+                        output += GetOperationCode((int)op.operationType, "stack[" + currentIndex + "]", "stack[" + childStackIndex + "]") + ";\n";
+
+                        carryOverFirstOp = false;
+                    }
                 }
                 else if(childGO.GetComponent<SDFShape>())
                 {
@@ -470,11 +489,13 @@ public class SDFGenerator : MonoBehaviour
                         output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector4(ConstructVariable(localShapeInverse), nodeStackPosition) + ".xyz;\n";
 
                     output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
-
+                    
                     if (first)
                         output += shapeCode + ";\n";
                     else
-                        output += GetOperationCode((int)op.operationType, "stack[" + stackIndex + "]", shapeCode) + ";\n";
+                        output += GetOperationCode((int)op.operationType, "stack[" + currentIndex + "]", shapeCode) + ";\n";
+
+                    carryOverFirstOp = false;
                 }
                 else
                 {
@@ -484,7 +505,16 @@ public class SDFGenerator : MonoBehaviour
                 first = false;
             }
 
-            if(verboseOutput)
+            // If we're still carrying over, but finished this node... 
+            if(carryOverFirstOp)
+            {
+                if (verboseOutput)
+                    output += GetTabs(depth + 2) + "// Carrying over node with single child \n";
+                
+                output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = stack[" + carryOverOpIndex + "];\n";
+            }
+
+            if (verboseOutput)
                 output += GetTabs(depth + 1) + "}\n";
         }
 
