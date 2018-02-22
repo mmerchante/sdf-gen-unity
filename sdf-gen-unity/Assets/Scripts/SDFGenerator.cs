@@ -123,6 +123,17 @@ public class SDFGenerator : MonoBehaviour
         return GetFloatIdentifier() + " " + var + "[" + size + "];\n";
     }
 
+    private string DeclareConstVector3ArrayVariable(string var, List<Vector3> vectors)
+    {
+        string output = "const " + GetVector3Identifier() + " " + var + "[" + vectors.Count + "] = " + GetVector3Identifier() + "[" + vectors.Count + "](\n";
+
+        for (int i = 0; i < vectors.Count; ++i)
+            output += GetTabs(1) + ConstructVariable(vectors[i]) + (i < vectors.Count - 1 ? ",\n" : "\n");
+
+        output += ");\n";
+        return output;
+    }
+
     private string DeclareConstMatrixArrayVariable(string var, List<Matrix4x4> matrices)
     {
         string output = "const " + GetMatrix4x4Identifier() + " " + var + "[" + matrices.Count + "] = " + GetMatrix4x4Identifier() + "[" + matrices.Count + "](\n";
@@ -290,6 +301,8 @@ public class SDFGenerator : MonoBehaviour
 
         if (transformArray)
             output = matrixArrayDeclaration + "\n" + output;
+
+        output = DeclareGenerateGDFVectorsArray() + "\n" + output;
 
         return output;
     }
@@ -599,5 +612,39 @@ public class SDFGenerator : MonoBehaviour
     public void UpdateRaymarcher(bool force)
     {
         RebuildAccumulationBuffer(force);
+    }
+
+    public string DeclareGenerateGDFVectorsArray()
+    {
+        float phi = Mathf.Sqrt(5f) * .5f + .5f;
+        List<Vector3> planes = new List<Vector3>();
+        
+        planes.Add(new Vector3(1, 0, 0));
+        planes.Add(new Vector3(0, 1, 0));
+        planes.Add(new Vector3(0, 0, 1));
+
+        planes.Add(new Vector3(1, 1, 1));
+        planes.Add(new Vector3(-1, 1, 1));
+        planes.Add(new Vector3(1, -1, 1));
+        planes.Add(new Vector3(1, 1, -1));
+
+        planes.Add(new Vector3(0, 1, phi + 1));
+        planes.Add(new Vector3(0, -1, phi + 1));
+        planes.Add(new Vector3(phi + 1, 0, 1));
+        planes.Add(new Vector3(-phi - 1, 0, 1));
+        planes.Add(new Vector3(1, phi + 1, 0));
+        planes.Add(new Vector3(-1, phi + 1, 0));
+
+        planes.Add(new Vector3(0, phi, 1));
+        planes.Add(new Vector3(0, -phi, 1));
+        planes.Add(new Vector3(1, 0, phi));
+        planes.Add(new Vector3(-1, 0, phi));
+        planes.Add(new Vector3(phi, 1, 0));
+        planes.Add(new Vector3(-phi, 1, 0));
+
+        for (int i = 0; i < planes.Count; i++)
+            planes[i] = planes[i].normalized;
+        
+        return DeclareConstVector3ArrayVariable("GDFVectors", planes);
     }
 }

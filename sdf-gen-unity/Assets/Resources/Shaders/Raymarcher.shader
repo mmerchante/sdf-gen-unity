@@ -105,7 +105,7 @@
 			float fCylinder(float3 p) {
 				float d = length(p.xz) - .5;
 				d = max(d, abs(p.y) - 1.0);
-				return d;
+				return d * .5;
 			}
 
 			// iq
@@ -392,7 +392,7 @@
 					--stackTop;
 				}
 
-				return stack[0].sdf * .95;
+				return stack[0].sdf * .65;
 			}
 
 			// Don't use this ;)
