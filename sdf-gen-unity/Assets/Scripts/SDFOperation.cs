@@ -23,6 +23,7 @@ public class SDFOperation : MonoBehaviour
         RepeatPolarZ = 7,
     }
 
+    public string customName = "";
     public OperationType operationType = OperationType.Union;
     public DomainDistortion distortionType = DomainDistortion.None;
 
@@ -31,5 +32,8 @@ public class SDFOperation : MonoBehaviour
     public void Update()
     {
         this.name = operationType.ToString();
+
+        if(!string.IsNullOrEmpty(customName))
+            this.name += "-" + customName;
     }
 }

@@ -83,7 +83,7 @@ public class SDFGenerator : MonoBehaviour
                     accumulationBuffer.Release();
                 }
 
-                accumulationBuffer = new RenderTexture((int)cam.pixelRect.width, (int)cam.pixelRect.height, 0, RenderTextureFormat.RFloat);
+                accumulationBuffer = new RenderTexture((int)cam.pixelRect.width, (int)cam.pixelRect.height, 0, RenderTextureFormat.ARGBFloat);
                 accumulationBuffer.useMipMap = false;
                 accumulationBuffer.autoGenerateMips = false;
                 accumulationBuffer.enableRandomWrite = true;

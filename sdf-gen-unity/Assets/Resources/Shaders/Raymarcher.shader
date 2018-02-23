@@ -29,7 +29,7 @@
 
 			#define MAX_DISTANCE 100.0
 			#define MIN_DISTANCE .5
-			#define EPSILON .025
+			#define EPSILON .015
 			#define EPSILON_NORMAL .01
 
 			#define MATERIAL_NONE -1
@@ -74,7 +74,7 @@
 			 
 			uniform int _SDFShapeCount;
 			uniform StructuredBuffer<Node> _SceneTree : register(t1);
-			uniform RWTexture2D<float> _AccumulationBuffer : register(u1);
+			uniform RWTexture2D<float4> _AccumulationBuffer : register(u1);
 
 			v2f vert (appdata v)
 			{
@@ -374,6 +374,9 @@
 
 						int opType = parentNode.parameters;
 
+						// Ideally, we should carry the scale... (TODO, also depends on uniform scale?)
+						// dd /= clamp(node.transform[0][0], .995, 1.0);
+
 						// For now, union
 						stack[stackTop - 1].sdf = sdfOperation(parentStackData.sdf, dd, opType);
 					}
@@ -407,34 +410,48 @@
 				return normalize(float3(dX, dY, dZ));
 			}
 
-			Intersection Raymarch(Camera camera, float2 uv)
+			Intersection Raymarch(Camera camera, float2 uv, out float iterations)
 			{
 				Intersection outData;
-				outData.materialID = MATERIAL_NONE;
 				outData.sdf = 0.0;
-				
+
 				uint2 index = uint2(_ScreenParams.xy * uv);
-				outData.totalDistance = max(MIN_DISTANCE, _AccumulationBuffer.Load(index) - EPSILON);
+				float4 accum = _AccumulationBuffer.Load(index);
+				
+				outData.totalDistance = max(MIN_DISTANCE, accum.x - EPSILON);
+				outData.materialID = accum.y;
 
-				if (outData.totalDistance < MAX_DISTANCE)
+				if (outData.totalDistance < MAX_DISTANCE * .95)
 				{
-					for (int j = 0; j < MAX_STEPS; ++j)
+					if(accum.y < .5)
 					{
-						float3 p = camera.origin + camera.direction * outData.totalDistance;
-						outData.sdf = sdf(p);
+						for (int j = 0; j < MAX_STEPS; ++j)
+						{
+							float3 p = camera.origin + camera.direction * outData.totalDistance;
+							outData.sdf = sdf(p);
 
-						outData.totalDistance += outData.sdf;
+							outData.totalDistance += outData.sdf;
 
-						if (outData.sdf < EPSILON || outData.totalDistance > MAX_DISTANCE)
-							break;
+							if (outData.sdf < EPSILON || outData.totalDistance > MAX_DISTANCE)
+								break;
+						}
+
+						if (outData.sdf < EPSILON)
+							outData.materialID = 1;
+
+						accum.x = lerp(_AccumulationBuffer.Load(index), outData.totalDistance, .995);
+						accum.y = outData.materialID;
+						accum.z += 1.f;
+
+
+						outData.totalDistance -= EPSILON;
 					}
-
-					if (outData.sdf < EPSILON)
-						outData.materialID = 1;
 				}
 
-				_AccumulationBuffer[index] = lerp(_AccumulationBuffer.Load(index), outData.totalDistance, .995);
-				outData.totalDistance -= EPSILON * 2.0;
+				iterations = accum.z;
+
+				_AccumulationBuffer[index] = accum;
+				outData.totalDistance -= EPSILON * 4.0;
 				return outData;
 			}
 
@@ -464,10 +481,11 @@
 				camera.origin = _WorldSpaceCameraPos;
 				camera.direction = normalize(i.worldSpacePosition - camera.origin);
 
-				Intersection isect = Raymarch(camera, i.uv);
+				float iterations = 0.0;
+				Intersection isect = Raymarch(camera, i.uv, iterations);
 				float3 color = Render(camera, isect, i.uv);
 
-				return float4(pow(color, .45454), 1.0);
+				return float4(pow(color, .45454), iterations);
 			}
 			ENDCG
 		}
