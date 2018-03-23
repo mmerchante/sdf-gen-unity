@@ -352,6 +352,16 @@
 							stack[stackTop].pos.xz = pModPolar(stack[stackTop].pos.xz, node.domainDistortion.x);
 						else if (node.domainDistortionType == 7)
 							stack[stackTop].pos.xy = pModPolar(stack[stackTop].pos.xy, node.domainDistortion.x);
+						else if(node.domainDistortionType == 8)
+							stack[stackTop].pos = abs(stack[stackTop].pos);
+						else if(node.domainDistortionType == 9)
+							stack[stackTop].pos.xz = abs(stack[stackTop].pos).xz * float2(-1.0, 1.0);
+						else if(node.domainDistortionType == 10)
+							stack[stackTop].pos.x = abs(stack[stackTop].pos).x;
+						else if(node.domainDistortionType == 11)
+							stack[stackTop].pos.y = abs(stack[stackTop].pos).y;
+						else if(node.domainDistortionType == 12)
+							stack[stackTop].pos.z = abs(stack[stackTop].pos).z;
 						
 						stackTop++;
 					} 
@@ -372,7 +382,6 @@
 							dd = fCylinder(wsPos);
 						else if(parameters == 6)
 							dd = wsPos.y + saturate(wsPos.x * .5) * .1 + saturate(wsPos.z + .5) * .1;
-
 
 						dd *= node.bias;
 

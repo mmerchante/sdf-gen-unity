@@ -21,6 +21,11 @@ public class SDFOperation : MonoBehaviour
         RepeatPolarX = 5,
         RepeatPolarY = 6,
         RepeatPolarZ = 7,
+        MirrorXYZ = 8,
+        MirrorXZ = 9,
+        MirrorX = 10,
+        MirrorY = 11,
+        MirrorZ = 12
     }
 
     public float sdfBias = 1f;
