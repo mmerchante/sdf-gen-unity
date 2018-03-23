@@ -70,6 +70,7 @@
 				int depth;
 				int domainDistortionType;
 				float3 domainDistortion;
+				float bias;
 			};
 			 
 			uniform int _SDFShapeCount;
@@ -372,10 +373,13 @@
 						else if(parameters == 6)
 							dd = wsPos.y + saturate(wsPos.x * .5) * .1 + saturate(wsPos.z + .5) * .1;
 
+
+						dd *= node.bias;
+
 						int opType = parentNode.parameters;
 
 						// Ideally, we should carry the scale... (TODO, also depends on uniform scale?)
-						// dd /= clamp(node.transform[0][0], .995, 1.0);
+						// dd /= clamp(node.transform[0][0], .1, 1.0);
 
 						// For now, union
 						stack[stackTop - 1].sdf = sdfOperation(parentStackData.sdf, dd, opType);

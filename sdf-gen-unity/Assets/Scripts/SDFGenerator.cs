@@ -34,6 +34,7 @@ public class SDFGenerator : MonoBehaviour
         public int depth;
         public int domainDistortionType;
         public Vector3 domainDistortion;
+        public float bias;
     }
 
     public void Awake()
@@ -584,6 +585,7 @@ public class SDFGenerator : MonoBehaviour
         node.depth = depth;
         node.domainDistortionType = 0;
         node.domainDistortion = Vector3.one;
+        node.bias = 1f;
 
         if (op)
         {
@@ -591,11 +593,13 @@ public class SDFGenerator : MonoBehaviour
             node.parameters = (int)op.operationType;
             node.domainDistortionType = (int)op.distortionType;
             node.domainDistortion = op.domainRepeat; // For now...
+            node.bias = op.sdfBias;
         }
         else if (shape)
         {
             node.type = 1;
             node.parameters = (int)shape.shapeType;
+            node.bias = shape.sdfBias;
         }
 
         nodeList.Add(node);

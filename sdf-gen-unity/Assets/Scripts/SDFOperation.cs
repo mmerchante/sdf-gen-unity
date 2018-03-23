@@ -23,6 +23,8 @@ public class SDFOperation : MonoBehaviour
         RepeatPolarZ = 7,
     }
 
+    public float sdfBias = 1f;
+
     public string customName = "";
     public OperationType operationType = OperationType.Union;
     public DomainDistortion distortionType = DomainDistortion.None;

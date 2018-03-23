@@ -20,6 +20,8 @@ public class SDFShape : MonoBehaviour
 
     public ShapeType shapeType = ShapeType.Sphere;
 
+    public float sdfBias = 1f;
+
     private MeshFilter filter;
     private MeshRenderer meshRenderer;
     private ShapeType prevType = ShapeType.Sphere;
