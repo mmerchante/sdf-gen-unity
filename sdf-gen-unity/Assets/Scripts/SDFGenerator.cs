@@ -190,6 +190,19 @@ public class SDFGenerator : MonoBehaviour
         return "";
     }
 
+    private string GetVector2Identifier()
+    {
+        switch (outputLanguage)
+        {
+            case ShadingLanguage.GLSL:
+                return "vec2";
+            case ShadingLanguage.HLSL:
+                return "float2";
+        }
+
+        return "";
+    }
+
     private string DeclareVariable(string var, Vector3 p)
     {
         return GetVector3Identifier() + " " + var + " = " + ConstructVariable(p) + ";\n";
@@ -239,6 +252,11 @@ public class SDFGenerator : MonoBehaviour
     private string ConstructVariable(Vector3 p)
     {
         return GetVector3Identifier() + "(" + ConstructVariable(p.x) + "," + ConstructVariable(p.y) + "," + ConstructVariable(p.z) + ")";
+    }
+
+    private string ConstructVariable(Vector2 p)
+    {
+        return GetVector2Identifier() + "(" + ConstructVariable(p.x) + "," + ConstructVariable(p.y) + ")";
     }
 
     private string ConstructVariable(float f)
@@ -333,8 +351,8 @@ public class SDFGenerator : MonoBehaviour
     {
         Vector3 offset = shape.transform.localPosition;
         Vector3 up = shape.transform.localRotation * Vector3.up;
-        Vector3 right = shape.transform.localRotation * Vector3.right;
-        Vector3 forward = shape.transform.localRotation * Vector3.forward;
+        // Vector3 right = shape.transform.localRotation * Vector3.right;
+        // Vector3 forward = shape.transform.localRotation * Vector3.forward;
 
         switch (shape.shapeType)
         {
@@ -480,9 +498,24 @@ public class SDFGenerator : MonoBehaviour
                         break;
                     case SDFOperation.DomainDistortion.RepeatPolarZ:
                         output += GetTabs(depth + 2) + nodeStackPosition + ".xy = pModPolar(" + nodeStackPosition + ".xy , " + ConstructVariable(op.domainRepeat.x) + ");\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.MirrorXYZ:
+                        output += GetTabs(depth + 2) + nodeStackPosition + " = abs(" + nodeStackPosition + ");\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.MirrorXZ:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".xz = abs(" + nodeStackPosition + ".xz) * " + ConstructVariable(new Vector2(-1f, 1f)) + ";\n";
+                        break;
+                    case SDFOperation.DomainDistortion.MirrorX:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".x = abs(" + nodeStackPosition + ".x);\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.MirrorY:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".y = abs(" + nodeStackPosition + ".y);\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.MirrorZ:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".z = abs(" + nodeStackPosition + ".z);\n";
                         break;
                 }
-            }
+            } 
 
             bool first = true;
             bool carryOverFirstOp = false;
@@ -525,6 +558,9 @@ public class SDFGenerator : MonoBehaviour
                 {
                     SDFShape shape = childGO.GetComponent<SDFShape>();
                     string shapeCode = GetShapeCode(shape, nodeStackPosition + ".xyz");
+
+                    if(shape.sdfBias != 1f)
+                        shapeCode = "(" + shapeCode + "*" + ConstructVariable(shape.sdfBias) + ")";
 
                     if (UseTransform(shape))
                     {
@@ -593,7 +629,7 @@ public class SDFGenerator : MonoBehaviour
             node.parameters = (int)op.operationType;
             node.domainDistortionType = (int)op.distortionType;
             node.domainDistortion = op.domainRepeat; // For now...
-            node.bias = op.sdfBias;
+            node.bias = 1f;
         }
         else if (shape)
         {

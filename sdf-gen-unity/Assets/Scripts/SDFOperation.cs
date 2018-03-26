@@ -28,8 +28,6 @@ public class SDFOperation : MonoBehaviour
         MirrorZ = 12
     }
 
-    public float sdfBias = 1f;
-
     public string customName = "";
     public OperationType operationType = OperationType.Union;
     public DomainDistortion distortionType = DomainDistortion.None;

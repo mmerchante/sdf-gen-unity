@@ -113,7 +113,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &14759895
+--- !u!21 &2576332
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &17761473
+--- !u!21 &10202577
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &39590871
+--- !u!21 &15628128
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &60729436
+--- !u!21 &22760984
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &70568546
+--- !u!21 &26956700
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &174028659
+--- !u!21 &60721479
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &191411801
+--- !u!21 &70089450
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &197869805
+--- !u!21 &73166836
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -321,7 +321,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &197998650
+--- !u!21 &84150305
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &271042450
+--- !u!21 &99111042
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &293133337
+--- !u!21 &111624473
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -399,7 +399,579 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &348485715
+--- !u!21 &120008057
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &155873873
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &163841300
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &169454907
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &178908746
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &215164530
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &219902846
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &225411550
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &253282521
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &257180732
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &257387214
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &300036674
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &300227813
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &300820220
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &301143623
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &305261735
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &305515915
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &336431078
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &344847019
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &345432625
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &351143275
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &360346962
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &369808708
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -499,7 +1071,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
---- !u!21 &389111288
+--- !u!21 &384976621
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -525,7 +1097,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &401263841
+--- !u!21 &392387188
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -551,7 +1123,33 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &403327622
+--- !u!21 &398913250
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &399857191
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -648,7 +1246,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 403651409}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!21 &461925958
+--- !u!21 &432336690
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -674,7 +1272,469 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &490289598
+--- !u!1001 &432933192
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23051220723461424, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 616738860}
+    - target: {fileID: 23186468480394030, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1530501444}
+    - target: {fileID: 23997403611429020, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 648228695}
+    - target: {fileID: 23027010841211396, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1883481600}
+    - target: {fileID: 23974754729797390, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1882810909}
+    - target: {fileID: 23669922029975282, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 219902846}
+    - target: {fileID: 23693315342406890, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 169454907}
+    - target: {fileID: 23579239233238024, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1857847629}
+    - target: {fileID: 23866416949581564, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 804493061}
+    - target: {fileID: 23821181864327454, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10202577}
+    - target: {fileID: 23832592182557752, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1430634105}
+    - target: {fileID: 23261457054571312, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 120008057}
+    - target: {fileID: 23371892636692886, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 345432625}
+    - target: {fileID: 23218867855617870, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1668659468}
+    - target: {fileID: 23709262525311680, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1352909882}
+    - target: {fileID: 23432492672395708, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1111287612}
+    - target: {fileID: 23896130150182490, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 215164530}
+    - target: {fileID: 23666029350387566, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 99111042}
+    - target: {fileID: 23271391593962992, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 225411550}
+    - target: {fileID: 23800380536357448, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 351143275}
+    - target: {fileID: 23959365717971524, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2013661443}
+    - target: {fileID: 23133168727458962, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 360346962}
+    - target: {fileID: 23547450339989256, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 602756949}
+    - target: {fileID: 23819427542502502, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1135516781}
+    - target: {fileID: 23307819748612164, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 399857191}
+    - target: {fileID: 23209149537648922, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1971575829}
+    - target: {fileID: 23742328438407614, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 26956700}
+    - target: {fileID: 23616985220281374, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 672306789}
+    - target: {fileID: 23131774130803540, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1263105210}
+    - target: {fileID: 23944622628828298, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 257387214}
+    - target: {fileID: 23367834107188900, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1731818240}
+    - target: {fileID: 23703428193052488, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1057914626}
+    - target: {fileID: 23022070245772520, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1001659149}
+    - target: {fileID: 23094944132872634, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 662272044}
+    - target: {fileID: 23958693574706584, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1303963155}
+    - target: {fileID: 23545360123218086, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1690201015}
+    - target: {fileID: 23022085124168356, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 865937903}
+    - target: {fileID: 23053188417680184, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1837247857}
+    - target: {fileID: 23218969671485856, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 84150305}
+    - target: {fileID: 23204697290406470, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1956505575}
+    - target: {fileID: 23058825715905526, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 686432482}
+    - target: {fileID: 23153710700092796, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 601188501}
+    - target: {fileID: 23802708369146856, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1104884189}
+    - target: {fileID: 23683187067891036, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2059556413}
+    - target: {fileID: 23171240433968632, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 472358453}
+    - target: {fileID: 23790391599236392, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2015196489}
+    - target: {fileID: 23198089024538534, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1750646329}
+    - target: {fileID: 23941809838325878, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 539805700}
+    - target: {fileID: 23534673223559116, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1317716587}
+    - target: {fileID: 23536048085204674, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 601532759}
+    - target: {fileID: 23329744973813752, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 384976621}
+    - target: {fileID: 23537986128423914, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1593049633}
+    - target: {fileID: 114951675149994716, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: quadRenderer
+      value: 
+      objectReference: {fileID: 403651411}
+    - target: {fileID: 23388443357529224, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 257180732}
+    - target: {fileID: 23822418896194700, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1228582367}
+    - target: {fileID: 23878152447916122, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 451887175}
+    - target: {fileID: 23286255909050600, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1310619724}
+    - target: {fileID: 23102840727169076, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1851804207}
+    - target: {fileID: 23320866212065702, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 111624473}
+    - target: {fileID: 23181235619943786, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1237477555}
+    - target: {fileID: 23463911488337100, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 790768349}
+    - target: {fileID: 23673874688021254, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1632721900}
+    - target: {fileID: 23507217666935022, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 253282521}
+    - target: {fileID: 23307861659956418, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1954693971}
+    - target: {fileID: 23789729945476952, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1162108931}
+    - target: {fileID: 23695487767746214, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 565754284}
+    - target: {fileID: 23053575549726382, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 914666544}
+    - target: {fileID: 23363733524765464, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1130941492}
+    - target: {fileID: 23099284232148360, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 475621839}
+    - target: {fileID: 23767988529310754, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1073583903}
+    - target: {fileID: 23874287796624314, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1898277222}
+    - target: {fileID: 23372945714198642, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 590306922}
+    - target: {fileID: 23430808463301428, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1249348535}
+    - target: {fileID: 23889684473148140, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 398913250}
+    - target: {fileID: 23409181880533804, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 673232166}
+    - target: {fileID: 23308012655347212, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1629152670}
+    - target: {fileID: 23442526282479934, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 369808708}
+    - target: {fileID: 23937975991694690, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 907774105}
+    - target: {fileID: 23887869593838530, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 992927362}
+    - target: {fileID: 23164030468575830, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1365043389}
+    - target: {fileID: 23746299278555874, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1253620931}
+    - target: {fileID: 23781321735639670, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 22760984}
+    - target: {fileID: 114951675149994716, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: outputLanguage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951675149994716, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
+        type: 2}
+      propertyPath: transformArray
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
+  m_IsPrefabParent: 0
+--- !u!21 &444222919
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -700,7 +1760,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &509475058
+--- !u!21 &451887175
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -726,7 +1786,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &521299254
+--- !u!21 &472358453
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -752,7 +1812,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &547318521
+--- !u!21 &475621839
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -778,7 +1838,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &575852852
+--- !u!21 &539805700
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -804,7 +1864,163 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &590800554
+--- !u!21 &553638619
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &555380625
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &561974232
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &565754284
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &590306922
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &601188501
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &601532759
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -856,7 +2072,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &632422193
+--- !u!21 &610385840
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -882,7 +2098,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &675194621
+--- !u!21 &616738860
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -908,7 +2124,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &683691791
+--- !u!21 &620885391
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -934,444 +2150,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!1001 &709362589
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089467247965442, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 23781321735639670, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1386472332}
-    - target: {fileID: 23746299278555874, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2140828699}
-    - target: {fileID: 23164030468575830, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 988354977}
-    - target: {fileID: 23887869593838530, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1963750330}
-    - target: {fileID: 23937975991694690, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1036924669}
-    - target: {fileID: 23442526282479934, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1905628690}
-    - target: {fileID: 23308012655347212, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 966942031}
-    - target: {fileID: 23409181880533804, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1699874372}
-    - target: {fileID: 23463569238604462, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1521291951}
-    - target: {fileID: 23430808463301428, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 14759895}
-    - target: {fileID: 23372945714198642, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 348485715}
-    - target: {fileID: 23997403611429020, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 39590871}
-    - target: {fileID: 23767988529310754, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1426717168}
-    - target: {fileID: 23099284232148360, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1212952248}
-    - target: {fileID: 23363733524765464, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 271042450}
-    - target: {fileID: 23053575549726382, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 960969869}
-    - target: {fileID: 23695487767746214, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1654375253}
-    - target: {fileID: 23789729945476952, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 17761473}
-    - target: {fileID: 23307861659956418, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1184931528}
-    - target: {fileID: 23507217666935022, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1699957102}
-    - target: {fileID: 23673874688021254, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100327475}
-    - target: {fileID: 23463911488337100, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1067772881}
-    - target: {fileID: 23181235619943786, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 754364974}
-    - target: {fileID: 23320866212065702, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 389111288}
-    - target: {fileID: 23102840727169076, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 973220368}
-    - target: {fileID: 23286255909050600, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 917610204}
-    - target: {fileID: 23878152447916122, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1025753126}
-    - target: {fileID: 23822418896194700, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 683691791}
-    - target: {fileID: 23388443357529224, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 521299254}
-    - target: {fileID: 114951675149994716, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: quadRenderer
-      value: 
-      objectReference: {fileID: 403651411}
-    - target: {fileID: 23537986128423914, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 741934571}
-    - target: {fileID: 23329744973813752, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 950973808}
-    - target: {fileID: 23536048085204674, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 675194621}
-    - target: {fileID: 23534673223559116, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 748108270}
-    - target: {fileID: 23941809838325878, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 293133337}
-    - target: {fileID: 23198089024538534, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 401263841}
-    - target: {fileID: 23790391599236392, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1880756574}
-    - target: {fileID: 23171240433968632, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1096287774}
-    - target: {fileID: 23683187067891036, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1011997819}
-    - target: {fileID: 23802708369146856, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1401392266}
-    - target: {fileID: 23153710700092796, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1337640657}
-    - target: {fileID: 23058825715905526, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 461925958}
-    - target: {fileID: 23204697290406470, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1834464994}
-    - target: {fileID: 23218969671485856, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1073518497}
-    - target: {fileID: 23053188417680184, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 403327622}
-    - target: {fileID: 23022085124168356, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1784906128}
-    - target: {fileID: 23545360123218086, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1762399026}
-    - target: {fileID: 23958693574706584, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1282412578}
-    - target: {fileID: 23094944132872634, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1491531428}
-    - target: {fileID: 23022070245772520, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 60729436}
-    - target: {fileID: 23186468480394030, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1831004451}
-    - target: {fileID: 23367834107188900, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1307036407}
-    - target: {fileID: 23944622628828298, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1543339783}
-    - target: {fileID: 23131774130803540, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 70568546}
-    - target: {fileID: 23616985220281374, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1902988405}
-    - target: {fileID: 23742328438407614, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 884467334}
-    - target: {fileID: 23209149537648922, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2052827382}
-    - target: {fileID: 23307819748612164, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 174028659}
-    - target: {fileID: 23819427542502502, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1756568659}
-    - target: {fileID: 23547450339989256, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 602756949}
-    - target: {fileID: 23133168727458962, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1799036291}
-    - target: {fileID: 23959365717971524, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 590800554}
-    - target: {fileID: 23800380536357448, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 197998650}
-    - target: {fileID: 23271391593962992, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 547318521}
-    - target: {fileID: 23666029350387566, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 490289598}
-    - target: {fileID: 23896130150182490, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2120754615}
-    - target: {fileID: 23432492672395708, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 197869805}
-    - target: {fileID: 23709262525311680, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1647918339}
-    - target: {fileID: 23051220723461424, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 866443186}
-    - target: {fileID: 23371892636692886, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1076422299}
-    - target: {fileID: 23261457054571312, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 509475058}
-    - target: {fileID: 23832592182557752, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2091773992}
-    - target: {fileID: 23821181864327454, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1482231579}
-    - target: {fileID: 23866416949581564, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1128987135}
-    - target: {fileID: 23579239233238024, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 632422193}
-    - target: {fileID: 23693315342406890, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 575852852}
-    - target: {fileID: 23669922029975282, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 876597555}
-    - target: {fileID: 23974754729797390, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1610473245}
-    - target: {fileID: 23027010841211396, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 191411801}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 737c3f3cd25ca0a48b7832ef7e9b5bff, type: 2}
-  m_IsPrefabParent: 0
---- !u!21 &741934571
+--- !u!21 &647785406
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1397,7 +2176,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &748108270
+--- !u!21 &648228695
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1423,7 +2202,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &754364974
+--- !u!21 &662272044
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1449,7 +2228,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &866443186
+--- !u!21 &672306789
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1475,7 +2254,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &876597555
+--- !u!21 &673232166
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1501,7 +2280,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &884467334
+--- !u!21 &686432482
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1527,7 +2306,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &917610204
+--- !u!21 &720636906
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1553,7 +2332,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &950973808
+--- !u!21 &764858347
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1579,7 +2358,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &960969869
+--- !u!21 &766249434
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1605,7 +2384,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &966942031
+--- !u!21 &790768349
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1631,7 +2410,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &973220368
+--- !u!21 &795919924
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1657,7 +2436,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &988354977
+--- !u!21 &804493061
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1683,7 +2462,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1011997819
+--- !u!21 &812647810
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1709,7 +2488,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1025753126
+--- !u!21 &865937903
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1735,7 +2514,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1036924669
+--- !u!21 &873351860
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1761,7 +2540,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1067772881
+--- !u!21 &907774105
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1787,7 +2566,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1073518497
+--- !u!21 &914666544
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1813,7 +2592,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1076422299
+--- !u!21 &992927362
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1839,7 +2618,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1096287774
+--- !u!21 &1001659149
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1865,7 +2644,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1128987135
+--- !u!21 &1057914626
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1891,7 +2670,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1184931528
+--- !u!21 &1073583903
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1917,7 +2696,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1212952248
+--- !u!21 &1104884189
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1943,7 +2722,475 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1282412578
+--- !u!21 &1111287612
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1118677184
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1121833573
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1130941492
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1135516781
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1162108931
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1184551697
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1211795165
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1211962805
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1217481730
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1228582367
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1237477555
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1239748083
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1247134045
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1249348535
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1251226095
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1253620931
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1263076594
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1263105210
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2034,7 +3281,137 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 134.453, y: 263.545, z: 340.42902}
---- !u!21 &1307036407
+--- !u!21 &1295053455
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1301618514
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1303963155
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1310619724
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1313829975
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1317716587
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2142,7 +3519,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 34.223003, y: 0, z: 0}
---- !u!21 &1337640657
+--- !u!21 &1351769705
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2168,7 +3545,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1386472332
+--- !u!21 &1352909882
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2194,7 +3571,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1401392266
+--- !u!21 &1358316467
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2220,7 +3597,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1426717168
+--- !u!21 &1365043389
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2246,7 +3623,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1482231579
+--- !u!21 &1369767558
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2272,7 +3649,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1491531428
+--- !u!21 &1422551421
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2298,7 +3675,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1521291951
+--- !u!21 &1430634105
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2324,7 +3701,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1543339783
+--- !u!21 &1432646017
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2350,7 +3727,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1610473245
+--- !u!21 &1458585818
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2376,7 +3753,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1647918339
+--- !u!21 &1470924180
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2402,7 +3779,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1654375253
+--- !u!21 &1472001530
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2428,7 +3805,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1699874372
+--- !u!21 &1490629027
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2454,7 +3831,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1699957102
+--- !u!21 &1505640908
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2480,7 +3857,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1756568659
+--- !u!21 &1530501444
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2506,7 +3883,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1762399026
+--- !u!21 &1532745236
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2532,7 +3909,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1784906128
+--- !u!21 &1537969951
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2558,7 +3935,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1799036291
+--- !u!21 &1556751834
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2584,7 +3961,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1831004451
+--- !u!21 &1561161680
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2610,7 +3987,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1834464994
+--- !u!21 &1593049633
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2636,7 +4013,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1880756574
+--- !u!21 &1629152670
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2662,7 +4039,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1902988405
+--- !u!21 &1631104208
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2688,7 +4065,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1905628690
+--- !u!21 &1632721900
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2714,7 +4091,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &1963750330
+--- !u!21 &1635763819
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2740,7 +4117,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &2052827382
+--- !u!21 &1647983792
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2766,7 +4143,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &2091773992
+--- !u!21 &1651816513
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2792,7 +4169,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &2100327475
+--- !u!21 &1661900818
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2818,7 +4195,7 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &2120754615
+--- !u!21 &1662802098
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2844,7 +4221,813 @@ Material:
     - _InvFade: 1
     m_Colors:
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!21 &2140828699
+--- !u!21 &1665002088
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1668659468
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1671557578
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1681841375
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1690201015
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1713705610
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1731818240
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1739307268
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1750646329
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1755413534
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1781036359
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1786087503
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1837247857
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1851804207
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1857847629
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1882195335
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1882810909
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1883481600
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1898277222
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1904736259
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1930305433
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1936131241
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1953489589
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1954693971
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1956505575
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1971575829
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1991889123
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &2002881437
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &2013661443
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &2015196489
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &2059556413
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Particles/Alpha Blended
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &2071799324
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
