@@ -8,7 +8,7 @@ public class SDFOperation : MonoBehaviour
     public enum OperationType
     {
         Union = 0,
-        Substraction = 1,
+        Subtraction = 1,
         Intersection = 2,
     }
     public enum DomainDistortion
@@ -29,6 +29,9 @@ public class SDFOperation : MonoBehaviour
         RotateDiscreteX = 13,
         RotateDiscreteY = 14,
         RotateDiscreteZ = 15,
+        FlipX = 16,
+        FlipY = 17,
+        FlipZ = 18,
     }
 
     public string customName = "";

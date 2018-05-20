@@ -110,6 +110,13 @@
 				return d * .5;
 			}
 
+			// hg
+			float fCylinder(float3 p, float r, float height) {
+				float d = length(p.xz) - r;
+				d = max(d, abs(p.y) - height);
+				return d;
+			}
+
 			// iq
 			float hash(float n)
 			{
@@ -231,30 +238,44 @@
 						stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
 						stack[stackTop].pos = mul(node.transform, float4(parentStackData.pos, 1.0)).xyz;
 
+						float3 currentPos = stack[stackTop].pos;
+
 						if (node.domainDistortionType == 1)
-							stack[stackTop].pos = domainRepeat(stack[stackTop].pos, node.domainDistortion);
+							stack[stackTop].pos = domainRepeat(currentPos, node.domainDistortion);
 						else if (node.domainDistortionType == 2)
-							stack[stackTop].pos.x = domainRepeat1D(stack[stackTop].pos.x, node.domainDistortion.x);
+							stack[stackTop].pos.x = domainRepeat1D(currentPos.x, node.domainDistortion.x);
 						else if (node.domainDistortionType == 3)
-							stack[stackTop].pos.y = domainRepeat1D(stack[stackTop].pos.y, node.domainDistortion.y);
+							stack[stackTop].pos.y = domainRepeat1D(currentPos.y, node.domainDistortion.y);
 						else if (node.domainDistortionType == 4)
-							stack[stackTop].pos.z = domainRepeat1D(stack[stackTop].pos.z, node.domainDistortion.z);
+							stack[stackTop].pos.z = domainRepeat1D(currentPos.z, node.domainDistortion.z);
 						else if (node.domainDistortionType == 5)
-							stack[stackTop].pos.yz = pModPolar(stack[stackTop].pos.yz, node.domainDistortion.x);
+							stack[stackTop].pos.yz = pModPolar(currentPos.yz, node.domainDistortion.x);
 						else if(node.domainDistortionType == 6)
-							stack[stackTop].pos.xz = pModPolar(stack[stackTop].pos.xz, node.domainDistortion.x);
+							stack[stackTop].pos.xz = pModPolar(currentPos.xz, node.domainDistortion.x);
 						else if (node.domainDistortionType == 7)
-							stack[stackTop].pos.xy = pModPolar(stack[stackTop].pos.xy, node.domainDistortion.x);
+							stack[stackTop].pos.xy = pModPolar(currentPos.xy, node.domainDistortion.x);
 						else if(node.domainDistortionType == 8)
-							stack[stackTop].pos = abs(stack[stackTop].pos);
+							stack[stackTop].pos = abs(currentPos);
 						else if(node.domainDistortionType == 9)
-							stack[stackTop].pos.xz = abs(stack[stackTop].pos).xz * float2(-1.0, 1.0);
+							stack[stackTop].pos.xz = abs(currentPos).xz * float2(-1.0, 1.0);
 						else if(node.domainDistortionType == 10)
-							stack[stackTop].pos.x = abs(stack[stackTop].pos).x;
+							stack[stackTop].pos.x = abs(currentPos).x;
 						else if(node.domainDistortionType == 11)
-							stack[stackTop].pos.y = abs(stack[stackTop].pos).y;
+							stack[stackTop].pos.y = abs(currentPos).y;
 						else if(node.domainDistortionType == 12)
-							stack[stackTop].pos.z = abs(stack[stackTop].pos).z;
+							stack[stackTop].pos.z = abs(currentPos).z;
+						else if(node.domainDistortionType == 13)
+							stack[stackTop].pos = float3(currentPos.x, currentPos.z, -currentPos.y);
+						else if(node.domainDistortionType == 14)
+							stack[stackTop].pos = float3(-currentPos.z, currentPos.y, currentPos.x);
+						else if(node.domainDistortionType == 15)
+							stack[stackTop].pos = float3(-currentPos.y, currentPos.x, currentPos.z);
+						else if(node.domainDistortionType == 16)
+							stack[stackTop].pos.x = -stack[stackTop].pos.x;
+						else if(node.domainDistortionType == 17)
+							stack[stackTop].pos.y = -stack[stackTop].pos.y;
+						else if(node.domainDistortionType == 18)
+							stack[stackTop].pos.z = -stack[stackTop].pos.z;
 						
 						stackTop++;
 					} 
@@ -272,7 +293,7 @@
 						else if (parameters == 3)
 							dd = fBox(wsPos, node.domainDistortion);
 						else if (parameters == 4)
-							dd = fCylinder(wsPos);
+							dd = fCylinder(wsPos, node.domainDistortion.x, node.domainDistortion.y);
 						else if(parameters == 6)
 							dd = wsPos.y + saturate(wsPos.x * .5) * .1 + saturate(wsPos.z + .5) * .1;
 

@@ -20,6 +20,8 @@ public class SDFGenerator : MonoBehaviour
     public bool verboseOutput = false;
     public bool transformArray = false;
 
+    public bool useStack = false;
+
     private Material material;
     private ComputeBuffer nodeBuffer;
     private RenderTexture accumulationBuffer;
@@ -203,6 +205,11 @@ public class SDFGenerator : MonoBehaviour
         return "";
     }
 
+    private string DeclareVariable(string var, Vector4 p)
+    {
+        return GetVector4Identifier() + " " + var + " = " + ConstructVariable(p) + ";\n";
+    }
+
     private string DeclareVariable(string var, Vector3 p)
     {
         return GetVector3Identifier() + " " + var + " = " + ConstructVariable(p) + ";\n";
@@ -291,6 +298,28 @@ public class SDFGenerator : MonoBehaviour
         return "\n";
     }
 
+    private string GetStackDistanceVariableName(int index, bool declare = false)
+    {
+          if(useStack)
+            return "stack[" + index + "]";
+
+        if(declare)
+            return GetFloatIdentifier() + " d" + index;
+        
+        return "d" + index;
+    }
+
+    private string GetStackPositionVariableName(int index, bool declare = false)
+    {
+        if(useStack)
+            return "pStack[" + index + "]";
+
+        if(declare)
+            return GetVector4Identifier() + " a" + index;
+        
+        return "a" + index;
+    }
+
     // Please note: this code is absolutely hacky and in no way designed for a scalable code 
     // generator. But it gets the job done quickly ;)
     public string GenerateCode()
@@ -299,6 +328,8 @@ public class SDFGenerator : MonoBehaviour
         string output = "float sdf_generated(" + GetVector3Identifier() + " p)\n{\n";
 
         Dictionary<SDFOperation, int> nodeMap = new Dictionary<SDFOperation, int>();
+        Dictionary<int, bool> visitMap = new Dictionary<int, bool>();
+        Dictionary<int, bool> dVisitMap = new Dictionary<int, bool>();
         SDFOperation[] nodes = gameObject.GetComponentsInChildren<SDFOperation>();
         List<Matrix4x4> matrices = new List<Matrix4x4>();
 
@@ -307,13 +338,18 @@ public class SDFGenerator : MonoBehaviour
 
         // The stack is just an easy way to deal with node states
         output += GetTabs(1) + DeclareVariable("wsPos", Vector3.zero);
-        output += GetTabs(1) + DeclareFloatArrayVariable("stack", nodes.Length);
-        output += GetTabs(1) + DeclareVector4ArrayVariable("pStack", nodes.Length);
-        output += GetTabs(1) + "pStack[0] = " + GetVector4Identifier() + "(p, 1.0);\n"; // Initialize root position
-        
-        output += GenerateCodeForNode(nodeMap, root, 0, matrices);
 
-        output += GetTabs(1) + "return stack[0];\n";
+        if(useStack)
+        {
+            output += GetTabs(1) + DeclareFloatArrayVariable("stack", nodes.Length);
+            output += GetTabs(1) + DeclareVector4ArrayVariable("pStack", nodes.Length);
+        }
+        
+        output += GetTabs(1) + GetStackPositionVariableName(0, true) + " = " + GetVector4Identifier() + "(p, 1.0);\n"; // Initialize root position
+        
+        output += GenerateCodeForNode(visitMap, dVisitMap, nodeMap, root, 0, matrices);
+
+        output += GetTabs(1) + "return " + GetStackDistanceVariableName(0) + ";\n";
         output += "}\n";
 
         string matrixArrayDeclaration = DeclareConstMatrixArrayVariable("tr", matrices);
@@ -338,7 +374,8 @@ public class SDFGenerator : MonoBehaviour
 
     private Vector3 GetShapeLocalScale(SDFShape shape)
     {
-        if(shape.shapeType == SDFShape.ShapeType.Cube)
+        if(shape.shapeType == SDFShape.ShapeType.Cube || 
+            shape.shapeType == SDFShape.ShapeType.Cylinder)
             return Vector3.one;
 
         return shape.transform.localScale;
@@ -367,6 +404,8 @@ public class SDFGenerator : MonoBehaviour
         // Vector3 right = shape.transform.localRotation * Vector3.right;
         // Vector3 forward = shape.transform.localRotation * Vector3.forward;
 
+        Vector3 parameters = shape.GetParameters();
+
         switch (shape.shapeType)
         {
             case SDFShape.ShapeType.Plane:
@@ -379,7 +418,7 @@ public class SDFGenerator : MonoBehaviour
             case SDFShape.ShapeType.Cube:
                 return "fBox(wsPos," + ConstructVariable(shape.GetParameters()) + ")";
             case SDFShape.ShapeType.Cylinder:
-                return "fCylinder(wsPos)";
+                return "fCylinder(wsPos, " + ConstructVariable(parameters.x) + "," + ConstructVariable(parameters.y) + ")";
         }
 
         return "0.0"; // Worst case
@@ -411,7 +450,7 @@ public class SDFGenerator : MonoBehaviour
         return "";
     }
 
-    private string GenerateCodeForNode(Dictionary<SDFOperation, int> nodeMap, GameObject go, int depth, List<Matrix4x4> matrices)
+    private string GenerateCodeForNode(Dictionary<int, bool> visitMap, Dictionary<int, bool> dVisitMap, Dictionary<SDFOperation, int> nodeMap, GameObject go, int depth, List<Matrix4x4> matrices)
     {
         string output = "";
 
@@ -423,7 +462,14 @@ public class SDFGenerator : MonoBehaviour
                 output += GetTabs(depth + 1) + "{\n";
 
             int stackIndex = nodeMap[op];
-            string nodeStackPosition = "pStack[" + stackIndex + "]";
+            bool firstTime = !visitMap.ContainsKey(stackIndex);
+            string nodeStackPosition = GetStackPositionVariableName(stackIndex, firstTime);
+            visitMap[stackIndex] = true;
+
+            float defaultDistance = op.operationType == SDFOperation.OperationType.Intersection ? 1000f : 0f;
+
+            // stack[stackTop].sdf = node.parameters == 2 ? 0.0 : 1000.0; // Make sure we initialize knowing the operation
+            // output += GetTabs(depth + 2) + GetStackDistanceVariableName(stackIndex, true) + " = " + defaultDistance.ToString("0.00") + ";\n";
 
             Matrix4x4 localInverse = Matrix4x4.TRS(op.transform.localPosition, op.transform.localRotation, op.transform.localScale).inverse;
 
@@ -434,7 +480,7 @@ public class SDFGenerator : MonoBehaviour
                 if (depth > 0)
                 {
                     int parentStackIndex = nodeMap[go.transform.parent.gameObject.GetComponent<SDFOperation>()];
-                    sourcePosition = "pStack[" + parentStackIndex + "]";
+                    sourcePosition = GetStackPositionVariableName(parentStackIndex);
                 }
 
                 if (op.transform.localRotation == Quaternion.identity)
@@ -483,9 +529,11 @@ public class SDFGenerator : MonoBehaviour
                 if (depth > 0)
                 {
                     int parentStackIndex = nodeMap[go.transform.parent.gameObject.GetComponent<SDFOperation>()];
-                    output += GetTabs(depth + 2) + nodeStackPosition + " = " + "pStack[" + parentStackIndex + "];\n";
+                    output += GetTabs(depth + 2) + nodeStackPosition + " = " + GetStackPositionVariableName(parentStackIndex) + ";\n";
                 }
             }
+
+            nodeStackPosition = GetStackPositionVariableName(stackIndex);
 
             if(op.distortionType != SDFOperation.DomainDistortion.None)
             {
@@ -526,6 +574,24 @@ public class SDFGenerator : MonoBehaviour
                         break;                        
                     case SDFOperation.DomainDistortion.MirrorZ:
                         output += GetTabs(depth + 2) + nodeStackPosition + ".z = abs(" + nodeStackPosition + ".z);\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.RotateDiscreteX:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".xyz = rdX(" + nodeStackPosition + ".xyz);\n";
+                        break;
+                    case SDFOperation.DomainDistortion.RotateDiscreteY:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".xyz = rdY(" + nodeStackPosition + ".xyz);\n";
+                        break;
+                    case SDFOperation.DomainDistortion.RotateDiscreteZ:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".xyz = rdZ(" + nodeStackPosition + ".xyz);\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.FlipX:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".x = -" + nodeStackPosition + ".x;\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.FlipY:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".y = -" + nodeStackPosition + ".y;\n";
+                        break;                        
+                    case SDFOperation.DomainDistortion.FlipZ:
+                        output += GetTabs(depth + 2) + nodeStackPosition + ".z = -" + nodeStackPosition + ".z;\n";
                         break;
                 }
             } 
@@ -533,6 +599,7 @@ public class SDFGenerator : MonoBehaviour
             bool first = true;
             bool carryOverFirstOp = false;
             int carryOverOpIndex = -1;
+            bool distanceEstablished = false;
 
             foreach (Transform child in go.transform)
             {
@@ -548,7 +615,7 @@ public class SDFGenerator : MonoBehaviour
 
                 if (childGO.GetComponent<SDFOperation>())
                 {
-                    output += GenerateCodeForNode(nodeMap, childGO, depth + 1, matrices);
+                    output += GenerateCodeForNode(visitMap, dVisitMap, nodeMap, childGO, depth + 1, matrices);
                     int childStackIndex = nodeMap[childGO.GetComponent<SDFOperation>()];
 
                     if (first)
@@ -561,10 +628,11 @@ public class SDFGenerator : MonoBehaviour
                     }
                     else
                     {
-                        output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
-                        output += GetOperationCode((int)op.operationType, "stack[" + currentIndex + "]", "stack[" + childStackIndex + "]") + ";\n";
+                        output += GetTabs(depth + 2) + GetStackDistanceVariableName(stackIndex, !distanceEstablished) + " = ";
+                        output += GetOperationCode((int)op.operationType, GetStackDistanceVariableName(currentIndex), GetStackDistanceVariableName(childStackIndex)) + ";\n";
 
                         carryOverFirstOp = false;
+                        distanceEstablished = true;
                     }
                 }
                 else if(childGO.GetComponent<SDFShape>())
@@ -628,12 +696,13 @@ public class SDFGenerator : MonoBehaviour
 
                     }
 
-                    output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
+                    output += GetTabs(depth + 2) + GetStackDistanceVariableName(stackIndex, !distanceEstablished) + " = ";
+                    distanceEstablished = true;
                     
                     if (first)
                         output += shapeCode + ";\n";
                     else
-                        output += GetOperationCode((int)op.operationType, "stack[" + currentIndex + "]", shapeCode) + ";\n";
+                        output += GetOperationCode((int)op.operationType, GetStackDistanceVariableName(currentIndex), shapeCode) + ";\n";
 
                     carryOverFirstOp = false;
                 }
@@ -651,7 +720,7 @@ public class SDFGenerator : MonoBehaviour
                 if (verboseOutput)
                     output += GetTabs(depth + 2) + "// Carrying over node with single child \n";
                 
-                output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = stack[" + carryOverOpIndex + "];\n";
+                output += GetTabs(depth + 2) + GetStackDistanceVariableName(stackIndex, true) + " = " + GetStackDistanceVariableName(carryOverOpIndex) + ";\n";
             }
 
             if (verboseOutput)
@@ -671,8 +740,8 @@ public class SDFGenerator : MonoBehaviour
 
         Vector3 scale = go.transform.localScale;
 
-        if(shape && shape.shapeType == SDFShape.ShapeType.Cube)
-            scale = Vector3.one;
+        if(shape)
+            scale = GetShapeLocalScale(shape);
 
         Node node = new Node();
         node.transform = Matrix4x4.TRS(go.transform.localPosition, go.transform.localRotation, scale).inverse;

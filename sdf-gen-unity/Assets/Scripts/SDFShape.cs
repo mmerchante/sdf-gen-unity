@@ -93,7 +93,7 @@ public class SDFShape : MonoBehaviour
             case ShapeType.Cube:
                 return new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z) * .5f;
             case ShapeType.Cylinder:
-                return Vector3.one * type;
+                return new Vector3(transform.localScale.x * .5f, transform.localScale.y, 1f);
             case ShapeType.Mesh:
                 break;
         }
