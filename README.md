@@ -1,7 +1,7 @@
 ![](images/soulstone.gif)
 
 # sdf-gen-unity
-A signed distance function generator running inside Unity. An example result raymarched scene can be found [here](https://www.shadertoy.com/view/XtSfDD).
+A signed distance function generator running inside Unity. An example result raymarched scene can be found [here](https://www.shadertoy.com/view/XtSfDD) or [here](https://www.shadertoy.com/view/XddBD2).
 
 It lets the user make and combine distance functions to make interesting scenes, inside an intuitive editor such as Unity. It tries to optimize the code for specific known cases (for example, it tries to prevent using matrices when dealing with planes), but it is far from complete.
 
@@ -172,5 +172,93 @@ float sdf_generated(vec3 p)
 	stack[0] = max(stack[1],dot(pStack[0].xyz - vec3(1.24,.07,2.43), vec3(-.129,-.864,.486)));
 	stack[0] = max(stack[0],dot(pStack[0].xyz - vec3(-.2,-1.41,1.48), vec3(.107,-.943,-.314)));
 	return stack[0];
+}
+```
+
+
+Another example scene: 
+
+
+![](images/sponza.png)
+```
+
+float sdf(vec3 p)
+{
+	vec3 wsPos = vec3(.0,.0,.0);
+	vec4 a0 = vec4(p, 1.0);
+	a0.xz = abs(a0.xz) * vec2(-1.0,1.0);
+	vec4 a1 = a0 - vec4(6.24,.0,2.5,.0);
+	a1.xz = pModPolar(a1.xz , 4.0);
+	float d1 = dot(a1.xyz - vec3(11.49,.0,.0), vec3(-1.0,.0,.0));
+	vec4 a2 = a1 - vec4(11.02,2.15,7.28,.0);
+	a2.z = domainRepeat1D(a2.z , 2.0);
+	vec4 a3 = a2;
+	wsPos = a3.xyz - vec3(-2.64,5.05,.0);
+	float d3 = fBox(wsPos,vec3(.5,.5,.228));
+	wsPos = a3.xyz - vec3(-2.275,5.05,.0);
+	d3 = min(d3,fBox(wsPos,vec3(.383,.383,.175)));
+	wsPos = a3.xyz - vec3(-2.64,6.97,.0);
+	d3 = min(d3,fBox(wsPos,vec3(.5,.283,.111)));
+	wsPos = a2.xyz - vec3(-1.28,6.38,.287);
+	float d2 = max(-d3,fBox(wsPos,vec3(1.5,1.893,6.673)));
+	d1 = min(d1,d2);
+	vec4 a4 = a1 - vec4(9.18,-4.5,-.032,.0);
+	a4.y = domainRepeat1D(a4.y , 4.5);
+	vec4 a5 = a4;
+	a5.z = domainRepeat1D(a5.z , 2.5);
+	vec4 a6 = a5;
+	a6.x = -a6.x;
+	vec4 a7 = a6;
+	vec4 a8 = a7 - vec4(.05,-.62,.0,.0);
+	a8.xyz = rdZ(a8.xyz);
+	wsPos = a8.xyz;
+	float d8 = (fCylinder(wsPos, 1.398,1.361)*.75);
+	wsPos = a8.xyz - vec3(.0,.152,.0);
+	d8 = max(-d8,(fCylinder(wsPos, 1.434,.531)*.75));
+	wsPos = a7.xyz - vec3(.786,.46,.0);
+	float d7 = max(d8,fBox(wsPos,vec3(.523,.747,1.415)));
+	vec4 a9 = a6;
+	wsPos = a9.xyz - vec3(.47,1.953,.0);
+	float d9 = fBox(wsPos,vec3(.5,.075,1.5));
+	wsPos = a9.xyz - vec3(.58,2.03,.0);
+	d9 = min(d9,fBox(wsPos,vec3(.5,.075,1.5)));
+	vec4 a10 = a9 - vec4(.463,-.51,1.179,.0);
+	a10.z = domainRepeat1D(a10.z , 2.35);
+	wsPos = a10.xyz;
+	float d10 = fBox(wsPos,vec3(.24,.033,.24));
+	wsPos = a10.xyz - vec3(.0,-.093,.0);
+	d10 = min(d10,fBox(wsPos,vec3(.24,.033,.24)));
+	wsPos = a10.xyz - vec3(-2.8,-.03,.0);
+	d10 = min(d10,fBox(wsPos,vec3(.25,.075,.25)));
+	vec4 a11 = a10;
+	a11.xz = pModPolar(a11.xz , 8.0);
+	wsPos = a11.xyz - vec3(.002,-1.07,.0);
+	float d11 = fBox(wsPos,vec3(.17,1.053,.424));
+	d10 = min(d10,d11);
+	d9 = min(d9,d10);
+	vec4 a12 = a9 - vec4(-1.03,-.518,.0,.0);
+	vec4 a13 = a12;
+	a13.xyz = rdZ(a13.xyz);
+	wsPos = (tr[0] * a13).xyz;
+	float d13 = fCylinder(wsPos, 1.225,3.0);
+	wsPos = a13.xyz;
+	d13 = min(d13,fCylinder(wsPos, 1.094,2.061));
+	wsPos = a12.xyz - vec3(.12,1.27,.0);
+	float d12 = max(-d13,fBox(wsPos,vec3(1.5,1.355,1.551)));
+	d9 = min(d9,d12);
+	float d6 = min(d7,d9);
+	vec4 a14 = a6 - vec4(.463,1.57,1.61,.0);
+	wsPos = (tr[1] * a14).xyz;
+	float d14 = fCylinder(wsPos, .105,.046);
+	wsPos = (tr[2] * a14).xyz;
+	d14 = min(d14,fCylinder(wsPos, .025,.582));
+	d6 = min(d6,d14);
+	float d5 = d6;
+	float d4 = d5;
+	d1 = min(d1,d4);
+	float d0 = min(d1,dot(a0.xyz - vec3(.0,-2.0,.0), vec3(.0,1.0,.0)));
+	d0 = min(d0, length(p - vec3(0.0, .35, .0)) - 1.5);
+    d0 = min(d0, -(p.y - 11.15));
+    return d0;
 }
 ```
