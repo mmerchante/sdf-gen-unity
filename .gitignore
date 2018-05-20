@@ -32,3 +32,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/sdf-gen-unity/.vscode
