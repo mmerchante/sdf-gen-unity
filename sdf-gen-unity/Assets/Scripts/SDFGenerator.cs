@@ -336,6 +336,19 @@ public class SDFGenerator : MonoBehaviour
         return "min(" + a + "," + b + ")";
     }
 
+    private Vector3 GetShapeLocalScale(SDFShape shape)
+    {
+        if(shape.shapeType == SDFShape.ShapeType.Cube)
+            return Vector3.one;
+
+        return shape.transform.localScale;
+    }
+
+    private Matrix4x4 GetLocalTransform(SDFShape shape)
+    {
+        return Matrix4x4.TRS(shape.transform.localPosition, shape.transform.localRotation, GetShapeLocalScale(shape));
+    }
+
     private bool UseTransform(SDFShape shape)
     {
         switch (shape.shapeType)
@@ -364,7 +377,7 @@ public class SDFGenerator : MonoBehaviour
             case SDFShape.ShapeType.Sphere:
                 return "length(wsPos) - .5";
             case SDFShape.ShapeType.Cube:
-                return "fBox(wsPos)";
+                return "fBox(wsPos," + ConstructVariable(shape.GetParameters()) + ")";
             case SDFShape.ShapeType.Cylinder:
                 return "fCylinder(wsPos)";
         }
@@ -564,14 +577,55 @@ public class SDFGenerator : MonoBehaviour
 
                     if (UseTransform(shape))
                     {
-                        Matrix4x4 localShapeInverse = Matrix4x4.TRS(shape.transform.localPosition, shape.transform.localRotation, shape.transform.localScale).inverse;
-                        string matrixVariable = "tr[" + matrices.Count + "]";
-                        matrices.Add(localShapeInverse);
+                        Matrix4x4 localShapeTransform = GetLocalTransform(shape);
 
-                        if (transformArray)
-                            output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector4(matrixVariable, nodeStackPosition) + ".xyz;\n";
+                        if(localShapeTransform == Matrix4x4.identity)
+                        {
+                            if(verboseOutput)
+                                output += GetTabs(depth + 2) + "// Shape transform optimized\n";
+
+                            output += GetTabs(depth + 2) + "wsPos = " + nodeStackPosition + ".xyz;\n";
+                        }
                         else
-                            output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector4(ConstructVariable(localShapeInverse), nodeStackPosition) + ".xyz;\n";
+                        {
+                            if(shape.transform.localRotation == Quaternion.identity)
+                            {
+                                Vector3 offset = shape.transform.localPosition;
+
+                                if (verboseOutput)
+                                    output += GetTabs(depth + 2) + "// Shape optimized rotation\n";
+
+                                output += GetTabs(depth + 2) + "wsPos = ";
+
+                                Vector3 scale = GetShapeLocalScale(shape);
+                                if (scale != Vector3.one)
+                                {
+                                    Vector3 invScale = new Vector3(1f / scale.x, 1f / scale.y, 1f / scale.z);
+                                    output += "( " + nodeStackPosition + ".xyz * " + ConstructVariable(invScale) + ")";
+                                }
+                                else
+                                {
+                                    output += nodeStackPosition + ".xyz";
+                                }
+
+                                if(offset.magnitude > 0f)
+                                    output += " - " + ConstructVariable(offset) + ";\n";
+                                else
+                                    output += ";\n";
+                            }
+                            else
+                            {
+                                Matrix4x4 localShapeInverse = localShapeTransform.inverse;
+                                string matrixVariable = "tr[" + matrices.Count + "]";
+                                matrices.Add(localShapeInverse);
+
+                                if (transformArray)
+                                    output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector4(matrixVariable, nodeStackPosition) + ".xyz;\n";
+                                else
+                                    output += GetTabs(depth + 2) + "wsPos = " + MultiplyMatrixVector4(ConstructVariable(localShapeInverse), nodeStackPosition) + ".xyz;\n";
+                            }                            
+                        }
+
                     }
 
                     output += GetTabs(depth + 2) + "stack[" + stackIndex + "] = ";
@@ -615,8 +669,13 @@ public class SDFGenerator : MonoBehaviour
         SDFOperation op = go.GetComponent<SDFOperation>();
         SDFShape shape = go.GetComponent<SDFShape>();
 
+        Vector3 scale = go.transform.localScale;
+
+        if(shape && shape.shapeType == SDFShape.ShapeType.Cube)
+            scale = Vector3.one;
+
         Node node = new Node();
-        node.transform = Matrix4x4.TRS(go.transform.localPosition, go.transform.localRotation, go.transform.localScale).inverse;
+        node.transform = Matrix4x4.TRS(go.transform.localPosition, go.transform.localRotation, scale).inverse;
         node.type = 0;
         node.depth = depth;
         node.domainDistortionType = 0;
@@ -635,6 +694,7 @@ public class SDFGenerator : MonoBehaviour
         {
             node.type = 1;
             node.parameters = (int)shape.shapeType;
+            node.domainDistortion = shape.GetParameters();
             node.bias = shape.sdfBias;
         }
 

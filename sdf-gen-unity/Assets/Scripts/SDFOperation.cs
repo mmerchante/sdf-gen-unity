@@ -25,7 +25,10 @@ public class SDFOperation : MonoBehaviour
         MirrorXZ = 9,
         MirrorX = 10,
         MirrorY = 11,
-        MirrorZ = 12
+        MirrorZ = 12,
+        RotateDiscreteX = 13,
+        RotateDiscreteY = 14,
+        RotateDiscreteZ = 15,
     }
 
     public string customName = "";

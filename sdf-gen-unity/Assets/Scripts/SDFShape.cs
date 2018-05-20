@@ -77,7 +77,7 @@ public class SDFShape : MonoBehaviour
         GameObject.DestroyImmediate(go);
     }
 
-    public Vector4 GetParameters()
+    public Vector3 GetParameters()
     {
         float type = ((int)shapeType);
 
@@ -87,17 +87,17 @@ public class SDFShape : MonoBehaviour
                 break;
             case ShapeType.Plane:
             case ShapeType.FracturedPlane:
-                return new Vector4(transform.up.x, transform.up.y, transform.up.z, type);
+                return new Vector3(transform.up.x, transform.up.y, transform.up.z);
             case ShapeType.Sphere:
-                return Vector4.one * type;
+                return Vector3.one * type;
             case ShapeType.Cube:
-                return Vector4.one * type;
+                return new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z) * .5f;
             case ShapeType.Cylinder:
-                return Vector4.one * type;
+                return Vector3.one * type;
             case ShapeType.Mesh:
                 break;
         }
 
-        return Vector4.zero;
+        return Vector3.zero;
     }
 }
